@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -123,4 +124,32 @@ public class Grupo implements Serializable{
 		this.calificaciones = calificaciones;
 	}
     
+	public void addMatricula(Matricula mat) {
+		if(matriculas == null)
+			matriculas = new ArrayList<Matricula>();
+			
+		matriculas.add(mat);		
+	}
+	
+	public void addCalificaciones(Calificacion cal) {
+		if(calificaciones == null)
+			calificaciones = new ArrayList<Calificacion>();
+			
+		calificaciones.add(cal);		
+	}
+	
+	public void addEspacioFisico(EspacioFisico esp) {
+		if(espaciosFisicos == null)
+			espaciosFisicos = new ArrayList<EspacioFisico>();
+			
+		espaciosFisicos.add(esp);		
+	}
+	
+	public void addHorario(Horario hor) {
+		if(horarios == null)
+			horarios = new ArrayList<Horario>();
+			
+		horarios.add(hor);		
+	}
+	
 }

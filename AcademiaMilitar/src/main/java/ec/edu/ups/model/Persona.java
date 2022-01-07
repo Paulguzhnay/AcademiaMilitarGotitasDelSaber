@@ -107,6 +107,30 @@ public class Persona implements Serializable {
     public void setCelular(String celular) {
         this.celular = celular;
     }
+
+	public Docente getDocentes() {
+		return docentes;
+	}
+
+	public void setDocentes(Docente docentes) {
+		this.docentes = docentes;
+	}
+
+	public Estudiante getEstudiantes() {
+		return estudiantes;
+	}
+
+	public void setEstudiantes(Estudiante estudiantes) {
+		this.estudiantes = estudiantes;
+	}
+
+	public Inscripcion getInscripciones() {
+		return inscripciones;
+	}
+
+	public void setInscripciones(Inscripcion inscripciones) {
+		this.inscripciones = inscripciones;
+	}
     
     
 }

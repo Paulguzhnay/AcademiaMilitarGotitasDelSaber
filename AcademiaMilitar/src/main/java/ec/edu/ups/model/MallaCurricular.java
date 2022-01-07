@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -71,6 +72,13 @@ public class MallaCurricular implements Serializable{
 
 	public void setOfertasAcademicas(List<OfertaAcademica> ofertasAcademicas) {
 		this.ofertasAcademicas = ofertasAcademicas;
+	}
+	
+	public void addOfertaAcademica(OfertaAcademica ofe) {
+		if(ofertasAcademicas == null)
+			ofertasAcademicas = new ArrayList<OfertaAcademica>();
+			
+		ofertasAcademicas.add(ofe);		
 	}
     
 }

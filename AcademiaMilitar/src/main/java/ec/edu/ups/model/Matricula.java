@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -76,6 +77,13 @@ public class Matricula implements Serializable {
 
 	public void setMaterias(List<Materia> materias) {
 		this.materias = materias;
+	}
+	
+	public void addMateria(Materia mat) {
+		if(materias == null)
+			materias = new ArrayList<Materia>();
+			
+		materias.add(mat);		
 	}
         
 }

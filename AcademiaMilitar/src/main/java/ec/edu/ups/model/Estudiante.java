@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -77,6 +78,20 @@ public class Estudiante implements Serializable {
 
 	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
+	}
+	
+	public void addCalificaciones(Calificacion cal) {
+		if(calificaciones == null)
+			calificaciones = new ArrayList<Calificacion>();
+			
+		calificaciones.add(cal);		
+	}
+	
+	public void addMatricula(Matricula mat) {
+		if(matriculas == null)
+			matriculas = new ArrayList<Matricula>();
+			
+		matriculas.add(mat);		
 	}
     
 }

@@ -8,7 +8,7 @@ import ec.edu.ups.model.Inscripcion;
 
 @Local
 public interface InscripcionONLocal {
-	public void insertar(Inscripcion in) throws Exception;
+	public void insertar(Inscripcion in);
 	
 	public List <Inscripcion> getInscripcions();
 }

@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -86,6 +87,13 @@ public class Materia implements Serializable{
 
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
+	}
+	
+	public void addGrupo(Grupo gru) {
+		if(grupos == null)
+			grupos = new ArrayList<Grupo>();
+			
+		grupos.add(gru);		
 	}
     
 }

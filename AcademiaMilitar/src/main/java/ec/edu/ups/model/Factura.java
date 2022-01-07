@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -162,6 +163,13 @@ public class Factura implements Serializable {
 
 	public void setLibroDiarios(List<LibroDiario> libroDiarios) {
 		this.libroDiarios = libroDiarios;
+	}
+	
+	public void addLibrosDiarios(LibroDiario lib) {
+		if(libroDiarios == null)
+			libroDiarios = new ArrayList<LibroDiario>();
+			
+		libroDiarios.add(lib);		
 	}
         
 }

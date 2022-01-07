@@ -3,6 +3,7 @@ package ec.edu.ups.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +33,8 @@ public class Inscripcion implements Serializable {
 	@Column(name = "ins_fechaRegistro")
     private Date fechaRegistro;
 	
-	@OneToOne
-	@JoinColumn(name = "per_cedula")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "per_cedula" )
     private Persona persona;
 
     public void setId(int id) {

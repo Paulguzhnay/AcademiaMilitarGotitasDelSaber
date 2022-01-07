@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "TBL_OfertaAcademica")
@@ -84,6 +86,13 @@ public class OfertaAcademica implements Serializable {
 
 	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
+	}
+	
+	public void addMatricula(Matricula mat) {
+		if(matriculas == null)
+			matriculas = new ArrayList<Matricula>();
+			
+		matriculas.add(mat);		
 	}
        
 }
