@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,10 +31,18 @@ public class MallaCurricular implements Serializable{
 	@Column(name = "mall_horas")
     private int horas;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "ofe_id")
-    private List<OfertaAcademica> ofertasAcademicas;
+    private OfertaAcademica ofertaAcademica;
 	
+	public OfertaAcademica getOfertaAcademica() {
+		return ofertaAcademica;
+	}
+
+	public void setOfertaAcademica(OfertaAcademica ofertaAcademica) {
+		this.ofertaAcademica = ofertaAcademica;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -65,12 +75,6 @@ public class MallaCurricular implements Serializable{
         this.horas = horas;
     }
 
-	public List<OfertaAcademica> getOfertasAcademicas() {
-		return ofertasAcademicas;
-	}
-
-	public void setOfertasAcademicas(List<OfertaAcademica> ofertasAcademicas) {
-		this.ofertasAcademicas = ofertasAcademicas;
-	}
+	
     
 }

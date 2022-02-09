@@ -2,12 +2,14 @@ package ec.edu.ups.business;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.dao.GrupoDAO;
 import ec.edu.ups.model.Grupo;
 
-public class GrupoON implements GrupoONRemote{
+@Stateless
+public class GrupoON implements GrupoONRemote, GrupoONLocal{
 	
 	@Inject
 	private GrupoDAO daoGrupo;
@@ -18,6 +20,10 @@ public class GrupoON implements GrupoONRemote{
 	
 	public List <Grupo> getGrupo(){
 		return daoGrupo.getList();
+	}
+	
+	public List <Grupo> getGrupo2(int matID){
+		return daoGrupo.getGrupo(matID);
 	}
 	
 }

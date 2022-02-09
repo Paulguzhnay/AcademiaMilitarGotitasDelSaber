@@ -45,5 +45,18 @@ public class MatriculaDAO {
 		return listado;
 		
 	}
+	
+	public List<Matricula> getMatFacturas(int idEst){
+		
+		List<Matricula> listado= new ArrayList<Matricula>();
+		
+		String jpql ="SELECT mat FROM Matricula mat WHERE mat.estudiante.id=?1";
+		Query query=em.createQuery(jpql, Matricula.class);
+		query.setParameter(1, idEst);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,14 +28,8 @@ public class EspacioFisico implements Serializable{
 	private String nombreEdificio;
 	@Column(name = "esp_numeroAula")
     private int numeroAula;
+		
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "esp_id")
-	private List<EspacioFisico> espacioFisico;
-	
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-	private Grupo grupo;
 
     public void setId(int id) {
 		this.id = id;
@@ -60,20 +55,6 @@ public class EspacioFisico implements Serializable{
         this.numeroAula = numeroAula;
     }
 
-	public List<EspacioFisico> getEspacioFisico() {
-		return espacioFisico;
-	}
-
-	public void setEspacioFisico(List<EspacioFisico> espacioFisico) {
-		this.espacioFisico = espacioFisico;
-	}
-
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+	
         
 }

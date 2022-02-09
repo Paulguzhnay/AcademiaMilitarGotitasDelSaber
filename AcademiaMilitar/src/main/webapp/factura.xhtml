@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+      
+
+<h:head>
+    <meta charset="UTF-8"></meta>
+    <title>Crear facturas con HTML, CSS y JavaScript</title>
+    <link rel="stylesheet" href="template/assets/css/main.css"></link>
+</h:head>
+<body>
+<div class="control-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-2-4">
+        <div class="slogan">Facturación </div>
+
+         <!--<label for="config_tax">IVA:
+          <input type="checkbox" id="config_tax" checked="true" onkeypress="true" />
+        </label>
+        <label for="config_tax_rate" class="taxrelated">Tasa:
+          <input type="text" id="config_tax_rate" value="0"/>%
+        </label>
+         <label for="config_note">Nota:
+          <input type="checkbox" id="config_note" />
+        </label> -->
+        
+      </div>
+      <div class="col-4 text-right">
+        <a href="javascript:window.print()">Imprimir</a>
+      </div><!--.col-->
+    </div><!--.row-->
+  </div><!--.container-->
+</div><!--.control-bar-->
+
+<header class="row">
+  <div class="logoholder text-center" >
+    <img src="template/assets/img/logo3.png"></img>
+  </div><!--.logoholder-->
+
+  <div class="me">
+    <p contenteditable="false">
+      <strong>Academia Militar Gotitas del Saber</strong><br />
+      234/90, Cuenca<br />
+      Ecuador.<br />
+      
+    </p>
+  </div><!--.me-->
+
+  <div class="info">
+    <p contenteditable="false">
+      Web: <a href="http://volkerotto.net">www.AMGS.ec</a><br />
+      E-mail: <a href="mailto:info@amgs.ec">info@amgs.ec</a><br />
+      Tel: +593-939-889-081<br />
+      Twitter: @amgs
+    </p>
+  </div><!-- .info -->
+
+  <div class="bank">
+     <!-- <p contenteditable="true">
+      Datos bacarios: <br></br>
+      Titular de la cuenta: <br></br>
+      IBAN: <br></br>
+      BIC:
+    </p>-->
+  </div><!--.bank-->
+
+</header>
+
+<h:form>
+<div class="row section">
+
+	<div class="col-2">
+    <h1 contenteditable="false">Factura</h1>
+  </div><!--.col-->
+
+  <div class="col-2 text-right details">
+    <p contenteditable="false">
+      Fecha: <h:inputText value="#{matriculaBean.fecha}"  type="text" class="datePicker" readonly="readonly" /><br></br>
+      Factura #: <input type="text" value="100" /><br></br>
+     Vence: <input class="twoweeks" type="text" readonly="readonly"/>
+    </p>
+  </div><!--.col-->
+  
+  
+  
+  <div class="col-2 ">
+    
+
+	<label>Numero de Cedula:</label> <br />
+    <h:inputText class="input_field contact_form_name"
+						data-error="Nivel is required." id="contact_form_na"
+						a:placeholder="" value="#{matriculaBean.factura.cedula}"/><br /><br />
+						
+	<label>Direccion:</label> <br />
+	<h:inputText class="input_field contact_form_name"
+						data-error="Nivel is required." id="contact_form_namd"
+						a:placeholder="" value="#{matriculaBean.factura.direccion}" /><br /><br />
+	
+	<label>Numero Telefonico:</label> <br />
+	<h:inputText class="input_field contact_form_name"
+						data-error="Nivel is required." id="contact_form_n"
+						a:placeholder="" value="#{matriculaBean.factura.telefono}"/><br /><br />
+  </div><!--.col-->
+  
+  
+  <div class="col-2">
+   
+   <label>Nombres y Apellidos:</label> <br />
+   <h:inputText class="input_field contact_form_name"
+						data-error="Nivel is required." id="contact_form_name1"
+						a:placeholder="" value="#{matriculaBean.factura.nombre}"/><br /><br />
+	
+	<label>Direccion de Email:</label> <br />
+	<h:inputText class="input_field contact_form_name"
+						data-error="Nivel is required." id="contact_form_name2"
+						a:placeholder="" value="#{matriculaBean.factura.correo}"/><br /><br />
+<!--  
+    <p contenteditable="true" class="client">
+      <strong>Enviar a</strong><br></br>
+      [Nombre cliente]<br></br>
+      [Nombre emmpresa]<br></br>
+	  [Dirección empresa]<br></br>
+	  [Tel empresa]
+    </p>
+   -->
+  </div><!--.col-->
+
+  
+
+</div><!--.row-->
+<br />
+<br />
+<div class="row section" style="margin-top:-1rem">
+<div class="col-1">
+	<!--  
+	<table style='width:100%'>
+    <thead contenteditable="true">
+	<tr class="invoice_detail">
+      <th width="25%" style="text-align">Vendedor</th>
+       <th width="25%">Orden de compra </th>
+      <th width="20%">Enviar por</th>
+      <th width="30%">Términos y condiciones</th>
+	 </tr> 
+    </thead>
+    <tbody contenteditable="true">
+	<tr class="invoice_detail">
+      <td width="25%" style="text-align">John Doe</td>
+       <td width="25%">#PO-2020 </td>
+      <td width="20%">DHL</td>
+      <td width="30%">Pago al contado</td>
+	 </tr>
+	</tbody>
+	</table>
+	-->
+</div>
+
+</div><!--.row-->
+
+<div class="invoicelist-body">
+  <table>
+    <thead contenteditable="false">
+      <th width="5%">Código</th>
+      <th width="60%">Descripción</th>
+      
+      <th width="10%">Cant.</th>
+      <th width="15%">Precio</th>
+      <th class="taxrelated">IVA</th>
+      <th width="10%">Total</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td width='5%'><a class="" href=""></a> <span contenteditable="false">12345</span></td>
+        <td width='60%'><span contenteditable="false">Matricula Ordinaria</span></td>
+        <td class="amount"><input type="text" value="1" readonly="readonly"/></td>
+        <td class="rate"><input type="text" value="2130.00" readonly="readonly"/></td>
+        <td class="tax taxrelated"></td>
+        <td class="sum"></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div><!--.invoice-body-->
+
+<div class="invoicelist-footer">
+  <table contenteditable="true">
+    <tr class="taxrelated">
+      <td>IVA:</td>
+      <td id="total_tax"></td>
+    </tr>
+    <tr>
+      <td><strong>Total:</strong></td>
+      
+      <td id="total_price"></td>
+    </tr>
+  </table>
+  
+  
+</div>
+
+
+
+<div class="note" contenteditable="true">
+  <h2>Nota:</h2>
+</div><!--.note-->
+
+<footer class="row">
+  <div class="col-1 text-center">
+  
+    <p class="notaxrelated" contenteditable="false">El monto de la factura no incluye el impuesto sobre las ventas.</p><br />
+    <h:commandButton class="contact_send_btn trans_200"
+						 action="#{matriculaBean.Factura()}"
+						value="Continuar" />
+	
+  </div>
+</footer>
+</h:form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="template/assets/bower_components/jquery/dist/jquery.min.js"></script></script>
+<script src="template/assets/js/main.js"></script>
+</body>
+</html>

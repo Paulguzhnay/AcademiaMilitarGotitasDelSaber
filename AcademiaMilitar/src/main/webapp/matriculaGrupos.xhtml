@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<f:metadata>
+		<f:viewAction action="#{matriculaBean.loadGrupos()}" />
+	</f:metadata>
+</h:head>
+
+<ui:composition template="template/contacto.xhtml">
+	<ui:define name="title">
+        Datos Matricula
+    </ui:define>
+	<ui:define name="content">
+
+
+		<h:form>
+			<div class="wrap-table100">
+				<div class="table100">
+					<ui:repeat var="car" value="#{matriculaBean.materias}"
+						id="folioTable">
+						<h3>#{car.nombre}</h3>
+						<h:inputHidden id="materiaID" value="#{car.id}" >
+						<!--  <f:ajax execute="materiaID" render="mytable" listener="#{matriculaBean.gruposTable()}"/> -->
+						</h:inputHidden>
+						
+							<h:dataTable id="mytable" var="gru" class="table table-striped"
+								value="#{matriculaBean.grupos}">
+
+								<h:column>
+									<f:facet name="header" class="table100-head">ID</f:facet>
+										#{gru.id}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Nro Grupo</f:facet>
+										#{gru.numeroGrupo}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Nivel</f:facet>
+										#{gru.nivel}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Dia</f:facet>
+										#{gru.horario.dia}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Hora</f:facet>
+										#{gru.horario.hora}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Edificio</f:facet>
+										#{gru.horario.espacio.nombreEdificio}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Nivel</f:facet>
+										#{gru.horario.espacio.numeroAula}
+								</h:column>
+								<h:column>
+									<f:facet name="header" class="table100-head">Estado</f:facet>
+									<h:selectBooleanCheckbox id="grupoEst"
+										value="#{gru.seleccionado}" />
+								</h:column>
+
+
+							</h:dataTable>
+							<br /><br/>
+						
+					</ui:repeat>
+					<br />
+					<h:commandButton class="contact_send_btn trans_200"
+						id="contact_send_btn" action="#{matriculaBean.grupo()}"
+						value="Continuar" />
+				
+				</div>
+			</div>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

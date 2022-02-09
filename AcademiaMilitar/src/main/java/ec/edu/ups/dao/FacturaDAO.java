@@ -45,5 +45,17 @@ public class FacturaDAO {
 		return listado;
 		
 	}
+	
+public List<Factura> getFacturas(){
+		
+		List<Factura> listado= new ArrayList<Factura>();
+		
+		String jpql ="SELECT fact FROM Factura fact WHERE fact.";
+		Query query=em.createQuery(jpql, Factura.class);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
 
 }

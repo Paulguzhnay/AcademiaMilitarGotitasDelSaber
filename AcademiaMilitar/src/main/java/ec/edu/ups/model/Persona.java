@@ -38,17 +38,6 @@ public class Persona implements Serializable {
 	@Column(name = "per_celular")
     private String celular;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "doc_id")
-    private Docente docentes;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "est_id")
-    private Estudiante estudiantes;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ins_id")
-    private Inscripcion inscripciones;
 
 
 	
@@ -107,6 +96,8 @@ public class Persona implements Serializable {
     public void setCelular(String celular) {
         this.celular = celular;
     }
+
+	
     
     
 }

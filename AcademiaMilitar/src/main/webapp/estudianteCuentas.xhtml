@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+      
+      <f:metadata>
+		<f:viewAction action="#{}" />
+	</f:metadata>
+
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title">
+        Listado de Cuentas
+    </ui:define>
+    <ui:define name="content">
+    	<h:form>
+	        <h:dataTable var="per" class="table align-items-center table-flush table-borderless" value="#{clientesBean.clientes}">
+	
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+					#{per.cedula}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+					#{per.nombre}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Direccion</f:facet>
+					#{per.direccion}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{clientesBean.editar(per.cedula)}" value="Editar" immediate="true" />
+				</h:column>
+			
+			
+			</h:dataTable>
+		</h:form>
+
+    </ui:define>
+ 
+</ui:composition>
+</html>

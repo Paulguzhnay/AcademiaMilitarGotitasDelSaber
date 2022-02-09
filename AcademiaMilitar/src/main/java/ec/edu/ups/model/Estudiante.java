@@ -1,6 +1,7 @@
 package ec.edu.ups.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,20 +27,16 @@ public class Estudiante implements Serializable {
 	@Column(name = "est_cicloCursando")
     private int cicloCursando;
 	
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "per_cedula")
     private Persona persona;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cal_id")
-    private List<Calificacion> calificaciones;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mat_id")
-    private List<Matricula> matriculas;
+
 	
 
-    public int getCicloCursando() {
+    
+
+	public int getCicloCursando() {
         return cicloCursando;
     }
 
@@ -63,20 +60,6 @@ public class Estudiante implements Serializable {
 		this.id = id;
 	}
 
-	public List<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-
-	public void setCalificaciones(List<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
-
-	public List<Matricula> getMatriculas() {
-		return matriculas;
-	}
-
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
-	}
+	
     
 }

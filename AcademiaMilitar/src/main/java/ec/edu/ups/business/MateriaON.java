@@ -24,4 +24,11 @@ public class MateriaON implements MateriaONRemote, MateriaONLocal {
 		return daoMateria.getList();
 	}
 	
+	public List<Materia> getMateriasCarrera(int nivel, int ofeID){
+		
+		
+		
+		return daoMateria.getListMaterias(nivel, ofeID);
+	}
+	
 }

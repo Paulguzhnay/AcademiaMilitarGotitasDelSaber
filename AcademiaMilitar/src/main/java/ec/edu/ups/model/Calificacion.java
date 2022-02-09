@@ -2,12 +2,14 @@ package ec.edu.ups.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,10 +25,12 @@ public class Calificacion implements Serializable {
 	@Column(name = "cal_notaObtenida")
     private double notaObtenida;
 	
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-	private Grupo grupo;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "mat_id")
+	private Materia materia;
+	
+
+	@ManyToOne
 	@JoinColumn(name = "est_id")
     private Estudiante estudiante;
     
@@ -39,13 +43,13 @@ public class Calificacion implements Serializable {
 		return id;
 	}
     
-    public Grupo getGrupo() {
-        return grupo;
-    }
+    public Materia getMateria() {
+		return materia;
+	}
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
 
     public Estudiante getEstudiante() {
         return estudiante;

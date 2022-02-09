@@ -14,13 +14,11 @@ public class PersonaON implements PersonaONRemote, PersonaONLocal {
 	@Inject
 	private PersonaDAO daoPersona;
 	
-	public void insertar(Persona p) throws Exception{
+	public void insertar(Persona p){
 		daoPersona.insert(p);
 	}
 	
 	public List<Persona> getPersonas(){
-		
-		
 		return daoPersona.getList();
 	}
 	

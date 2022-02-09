@@ -3,6 +3,7 @@ package ec.edu.ups.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,11 +33,23 @@ public class Inscripcion implements Serializable {
 	@Column(name = "ins_fechaRegistro")
     private Date fechaRegistro;
 	
-	@OneToOne
-	@JoinColumn(name = "per_cedula")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "per_cedula" )
     private Persona persona;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "log_id")
+    private IniciarSesion iniciarSesion;
 
-    public void setId(int id) {
+    public IniciarSesion getIniciarSesion() {
+		return iniciarSesion;
+	}
+
+	public void setIniciarSesion(IniciarSesion iniciarSesion) {
+		this.iniciarSesion = iniciarSesion;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     

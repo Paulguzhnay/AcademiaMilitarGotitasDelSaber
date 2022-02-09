@@ -12,6 +12,8 @@ public interface MatriculaONLocal {
 public void insertar(Matricula p) throws Exception;
 	
 	public List<Matricula> getMatriculas();
+	
+	public List<Matricula> getMatFact(int idEst);
 
 }
 
