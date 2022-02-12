@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+      
+      <f:metadata>
+		<f:viewParam var="pri" name="id" value="#{principalBean.cedula}"></f:viewParam>
+	</f:metadata>
+
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title" >
+        Bienvenido
+    </ui:define>
+
+     <ui:define name="cabezera" >
+        Pagina Personal
+    </ui:define>
+    
+        <ui:define name="inicio" >
+        <a href="interfazUsuario.xhtml?id=#{principalBean.cedula}">
+          <i class="zmdi zmdi-view-dashboard"></i> <span>Inicio</span>
+        </a>
+    </ui:define>
+
+    <ui:define name="direccion" >
+        <a href="#{principalBean.editarDatos(principalBean.cedula)}">
+        <i class="zmdi zmdi-face"></i> <span>Datos Personales</span>
+        
+        </a>
+    </ui:define>
+    
+      <ui:define name="estadoCuenta" >
+       <a href="estudianteCuentas.xhtml?id=#{principalBean.cedula}">
+          <i class="zmdi zmdi-format-list-bulleted"></i> <span>Estado de Cuenta</span>
+        </a>
+    </ui:define>
+    
+    <ui:define name="matricula" >
+        <a href="#{principalBean.ventanaMatricula(principalBean.cedula)}">
+        <i class="zmdi zmdi-account-circle"></i> <span>Matricula en Linea</span>
+        </a>
+        
+       
+    </ui:define>
+    
+    <ui:define name="content">
+    <br/>
+    <h:form class="search-bar">
+       
+        
+      </h:form>
+      <br></br>
+    	<h:form>
+	        
+		</h:form>
+
+    </ui:define>
+ 
+</ui:composition>
+</html>

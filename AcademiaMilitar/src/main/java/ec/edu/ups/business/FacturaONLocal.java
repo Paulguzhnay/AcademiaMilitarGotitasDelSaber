@@ -12,4 +12,6 @@ public interface FacturaONLocal {
 
 	public void insertar(Factura  p) throws Exception;	
 	public List <Factura> getFacturas();
+	public void actualizar(Factura f) ;
+	public Factura buscar(int id);
 }

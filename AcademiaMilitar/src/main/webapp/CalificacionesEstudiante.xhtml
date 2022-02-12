@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+       <h:head>
+      </h:head>
+ 
+      <body></body>
+      
+<ui:composition template="template3/plantillaEst.xhtml">
+    <ui:define name="title">
+        Crear Asignatura
+        ...............................
+    </ui:define>
+    <ui:define name="direccion" >
+        <a href="#{principalBean.editarDatos(principalBean.cedula)}">
+        <i class="zmdi zmdi-face"></i> <span>Datos Personales</span>
+        
+        </a>
+    </ui:define>
+    
+    <ui:define name="matricula" >
+        <a href="#{principalBean.ventanaMatricula(principalBean.cedula)}">
+        <i class="zmdi zmdi-account-circle"></i> <span>Matricula en Linea</span>
+        </a>
+        
+       
+    </ui:define>
+    <ui:define name="content"> 
+                <div class="card-body" var="cal">
+						<h:form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+
+							<h:outputLabel value="CEDULA" />
+							<h:inputText  type="text"  value="#{estudiantesBean.cedula}"   class="form-control"  required="required"/>
+
+							<h:outputLabel value="Nivel" />
+							<h:inputText  type="text"  value="#{estudiantesBean.nivel}"   class="form-control"  required="required"/>
+
+							<br />
+							<!-- BOTON -->
+							<h:commandButton action="#{estudiantesBean.buscarCedula()}" value="Buscar" class="counter_form_button"/>
+
+						</h:form>
+					</div>
+    </ui:define>		
+
+
+
+    <ui:define name="content2"> 
+    
+    
+                    <div class="card-body">
+                <h:dataTable var="mat"  class="table align-items-center table-flush table-borderless"  value="#{estudiantesBean.listMateriaEst}">
+						<h:column>
+							<f:facet name="header">Nombre de la Asignatura      </f:facet>
+							#{mat.nombre}
+						</h:column>
+
+                <h:dataTable var="cal"  class="table align-items-center table-flush table-borderless"  value="#{estudiantesBean.listCalificacionFinal2}">
+						<h:column>
+							<f:facet name="header">Notas</f:facet>
+							#{cal.notaObtenida}
+						</h:column>
+
+					</h:dataTable>
+					</h:dataTable>
+
+					</div>
+    
+    
+                <div class="card-body">
+                <h:dataTable var="cal"  class="table align-items-center table-flush table-borderless"  value="#{estudiantesBean.listCalificacionFinal2}">
+						<h:column>
+							<f:facet name="header">Notas</f:facet>
+							#{cal.notaObtenida}
+						</h:column>
+					</h:dataTable>
+					</div>
+    </ui:define>		
+
+
+</ui:composition>		
+</html>

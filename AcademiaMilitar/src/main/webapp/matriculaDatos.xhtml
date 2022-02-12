@@ -6,7 +6,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
+<f:metadata>
+		<f:viewParam name="id" value="#{matriculaBean.cedula1}"></f:viewParam>
+		<f:viewAction action="#{matriculaBean.guardarCedula()}" />
+	</f:metadata>
 </h:head>
 
 <ui:composition template="template/contacto.xhtml">
@@ -19,9 +22,15 @@
 				<h:form name="data">
 					
 					<h:inputText class="input_field contact_form_name" name="data"
-						data-error="Nivel is required." id="contact_form_name"
-						a:placeholder="Ingrese el Nivel" value="#{matriculaBean.nivelElegido}"/>
-
+						data-error="Nivel is required." id="Nivel"
+						a:placeholder="Ingrese el Nivel" value="#{matriculaBean.nivelElegido}" required="true" requiredMessage="Nivel es obligatorio">
+						
+						<f:validateLength for = "Nivel" minimum = "1" maximum = "2" />
+						</h:inputText>
+					<h:message  for = "Nivel" 
+					style = "color: #d8000c;
+  					background-color: #ffbaba;" >
+  					</h:message> 
 					<h:selectOneMenu id="form_carrera"
 						class="input_field contact_form_email" placeholder="Carrera"
 						required="required" value="#{matriculaBean.carreraElegida}">

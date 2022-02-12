@@ -9,7 +9,7 @@ import ec.edu.ups.model.*;
 import ec.edu.ups.dao.*;
 
 @Stateless
-public class CalificacionON  implements CalificacionONRemote{
+public class CalificacionON  implements CalificacionONRemote, CalificacionONLocal{
 
 
 	

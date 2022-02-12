@@ -38,7 +38,7 @@
 
 <header class="row">
   <div class="logoholder text-center" >
-    <img src="template/assets/img/logo3.png"></img>
+    <img src="template/assets/img/logo4.png"></img>
   </div><!--.logoholder-->
 
   <div class="me">
@@ -92,18 +92,28 @@
 
 	<label>Numero de Cedula:</label> <br />
     <h:inputText class="input_field contact_form_name"
-						data-error="Nivel is required." id="contact_form_na"
-						a:placeholder="" value="#{matriculaBean.factura.cedula}"/><br /><br />
+						data-error="Nivel is required." id="cedula"
+						a:placeholder="" value="#{matriculaBean.factura.cedula}"
+						validator = "cedulaValidador" required="true" requiredMessage="Cedula es obligatorio"
+						>
+						<f:validator validatorId="cedulaIncorrecta" />
 						
+						</h:inputText><br /><br />
+						<h:message for="cedula" id="error" style="color: red" /><br></br>
 	<label>Direccion:</label> <br />
 	<h:inputText class="input_field contact_form_name"
-						data-error="Nivel is required." id="contact_form_namd"
-						a:placeholder="" value="#{matriculaBean.factura.direccion}" /><br /><br />
-	
+						data-error="Nivel is required." id="direccion"
+						a:placeholder="" value="#{matriculaBean.factura.direccion}" 
+						required="true" requiredMessage="Direccion es obligatorio" >
+						</h:inputText><br /><br />
+						<h:message for="direccion"  style="color: red" /><br></br>
 	<label>Numero Telefonico:</label> <br />
 	<h:inputText class="input_field contact_form_name"
-						data-error="Nivel is required." id="contact_form_n"
-						a:placeholder="" value="#{matriculaBean.factura.telefono}"/><br /><br />
+						data-error="Nivel is required." id="telefono"
+						a:placeholder="" value="#{matriculaBean.factura.telefono}"
+						required="true" requiredMessage="Numero telefonico es obligatorio"
+						/><br /><br />
+						<h:message for="telefono"  style="color: red" /><br></br>
   </div><!--.col-->
   
   
@@ -111,13 +121,19 @@
    
    <label>Nombres y Apellidos:</label> <br />
    <h:inputText class="input_field contact_form_name"
-						data-error="Nivel is required." id="contact_form_name1"
-						a:placeholder="" value="#{matriculaBean.factura.nombre}"/><br /><br />
+						data-error="Nivel is required." id="nombres"
+						a:placeholder="" value="#{matriculaBean.factura.nombre}"
+						required="true" requiredMessage="Nombres y Apellidos es obligatorio"
+						/><br /><br />
+						<h:message for="nombres"  style="color: red" /><br></br>
 	
 	<label>Direccion de Email:</label> <br />
 	<h:inputText class="input_field contact_form_name"
-						data-error="Nivel is required." id="contact_form_name2"
-						a:placeholder="" value="#{matriculaBean.factura.correo}"/><br /><br />
+						data-error="Nivel is required." id="email"
+						a:placeholder="" value="#{matriculaBean.factura.correo}"
+						required="true" requiredMessage="Email es obligatorio"
+						/><br /><br />
+						<h:message for="email"  style="color: red" /><br></br>
 <!--  
     <p contenteditable="true" class="client">
       <strong>Enviar a</strong><br></br>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+  <ui:composition template="/template3/plantillaListar2.xhtml">
+  	<ui:define name="title">
+		Listar Asignaturas
+	</ui:define>
+	<ui:define name="content">
+  
+  <h:form>
+<h:dataTable var="asig"  class="table align-items-center table-flush table-borderless"  value="#{asignaturaBean.listMalla}">
+
+		<h:column>
+			<f:facet name="header">Nombre de la Asignatura      </f:facet>
+			#{asig.asignatura}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Nivel de la Asignatura       </f:facet>
+			#{asig.nivel}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Horas de la Asignatura       </f:facet>
+			#{asig.horas}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Editar</f:facet>
+			<h:commandButton action="#{asignaturaBean.editar(asig.id)}" value="Editar" immediate="true" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Eliminar</f:facet>
+			<h:commandButton action="#{asignaturaBean.eliminar(asig.id)}" value="Eliminar"  immediate="true" />
+		</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

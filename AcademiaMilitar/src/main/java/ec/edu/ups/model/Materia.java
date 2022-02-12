@@ -37,6 +37,9 @@ public class Materia implements Serializable{
 	
 	@Transient
 	private boolean seleccionado;
+	
+	@Transient
+	private List<Grupo>grupos=new ArrayList<Grupo>();
 
     public void setId(int id) {
 		this.id = id;
@@ -70,6 +73,15 @@ public class Materia implements Serializable{
 
 	public void setSeleccionado(boolean seleccionado) {
 		this.seleccionado = seleccionado;
+	}
+	
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
 	}
 
 	@Override

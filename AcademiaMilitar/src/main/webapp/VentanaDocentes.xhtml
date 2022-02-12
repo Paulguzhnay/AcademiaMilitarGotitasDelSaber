@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+ 
+<ui:composition template="template7/plantillaInicio.xhtml">
+    <ui:define name="title">
+        Portal Educativo
+    </ui:define>
+    <ui:define name="content"> 
+    		
+			<h:form>
+				<h:dataTable var="per" class="table table-striped" value="#{docentesBean.lista}" immediate="true">
+				<h:column>
+					<f:facet name="header">Nombres</f:facet>
+					#{per.persona.nombres} #{per.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Apellidos</f:facet>
+					#{per.persona.apellidos}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{docentesBean.informacion(per.id)}" value="Ver Información" style="float: none; width: 30%; height: 35px; border: none; border-radius: 20px; margin-top: -8px;color: rgba(255,255,255, 1); background-color: rgba(16,89,255, 1);"></h:commandButton>
+				</h:column>
+				</h:dataTable>
+			</h:form>
+	</ui:define>
+</ui:composition>
+</html>

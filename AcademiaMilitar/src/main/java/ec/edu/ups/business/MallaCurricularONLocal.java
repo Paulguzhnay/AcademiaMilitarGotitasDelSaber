@@ -10,5 +10,9 @@ import ec.edu.ups.model.MallaCurricular;
 public interface MallaCurricularONLocal {
 	public void insertar(MallaCurricular mall) throws Exception ;
 	
-	public List <MallaCurricular> getLibro();
+	public List <MallaCurricular> getMalla();
+	public MallaCurricular obtenerDatosAsignatura(int id);
+	public void guardar(MallaCurricular mall) throws Exception ;
+	public void eliminarAsignatura(int id);
+//	public void actualizarAsignatura(MallaCurricular mall);
 }

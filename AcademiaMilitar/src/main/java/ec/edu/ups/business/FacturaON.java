@@ -23,5 +23,12 @@ public class FacturaON implements FacturaONRemote, FacturaONLocal{
 		return daoFactura.getList();
 	}
 	
+	public void actualizar(Factura f) {
+		daoFactura.update(f);
+	}
+	
+	public Factura buscar(int id) {
+		return daoFactura.read(id);
+	}
 	
 }

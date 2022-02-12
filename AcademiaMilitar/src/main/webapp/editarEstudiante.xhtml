@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+      
+      <f:metadata>
+      
+      <f:metadata>
+      		<f:viewParam name="id" value="#{principalBean.cedula}"></f:viewParam>
+      		<f:viewAction action="#{principalBean.loadData()}"/>
+      	</f:metadata>
+		
+	</f:metadata>
+
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title" >
+        Bienvenido
+    </ui:define>
+    
+    <ui:define name="direccion" >
+        <a href="#{principalBean.editarDatos(principalBean.cedula)}">
+        <i class="zmdi zmdi-face"></i> <span>Datos Personales</span>
+        
+        </a>
+    </ui:define>
+
+     <ui:define name="cabezera" >
+        Datos Personales
+    </ui:define>
+    <ui:define name="content">
+    <br/>
+    <h:form class="search-bar">
+       
+				<h:dataTable var="per" class="table table-striped" value="#{principalBean.persona}">
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+					#{per.cedula}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+					#{per.nombres}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+					#{per.apellidos}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Direccion</f:facet>
+					#{per.direccion}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Telefono</f:facet>
+					#{per.celular}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Genero</f:facet>
+					#{per.genero}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{principalBean.editar(per.cedula)}" value="Editar" immediate="true" />
+				</h:column>
+				</h:dataTable>        
+      </h:form>
+      <br></br>
+    </ui:define>
+ 
+</ui:composition>
+</html>

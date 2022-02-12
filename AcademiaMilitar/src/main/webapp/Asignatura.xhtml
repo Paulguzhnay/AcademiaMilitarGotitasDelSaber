@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+       <h:head>
+      	<f:metadata>
+		<f:viewParam name="id" value="#{asignaturaBean.id}"></f:viewParam>
+  		<f:viewAction action="#{asignaturaBean.loadData()}"/>
+	</f:metadata>     
+      </h:head>
+ 
+      <body></body>
+      
+<ui:composition template="template7/plantillaAsignaturas.xhtml">
+    <ui:define name="title">
+        Crear Asignatura
+        ...............................
+    </ui:define>
+    <ui:define name="content"> 
+				<p:messages autoUpdate="true" showDetail="true"/>
+				<div class="row fill_height">
+					<div class="col fill_height">
+						<h:form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+							<h2 class="counter_title">Registro de Asignaturas</h2>
+							<div class="counter_form_title">REGISTRO</div>
+						
+							<!--NOMBRE ASIGNATURA -->
+							<h:outputLabel value="Nombre de la Asignatura"/>
+							<h:inputText  value="#{asignaturaBean.malla.asignatura}"  class="counter_input" placeholder="Etica" required="required"/>
+							<!--HORAS ASIGNATURA -->
+							<h:outputLabel value="Horas de Materia"/>							
+							<h:inputText  value="#{asignaturaBean.malla.horas}"  class="counter_input" placeholder="100" required="required"/>								
+							<!--NIVEL ASIGNATURA -->
+							<h:outputLabel value="Nivel de Materia"/>	
+							<h:inputText  value="#{asignaturaBean.malla.nivel}"  class="counter_input" placeholder="100" required="required"/>								
+
+							<!-- BOTON -->
+							<h:commandButton action="#{asignaturaBean.guardarAsignatura()}" value="Guardar" 
+							class="counter_form_button"/>
+
+							<!-- BOTON -->
+							<h:commandButton action="#{asignaturaBean.listaAsignatura()}" value="Listar" 
+							class="counter_form_button"/>
+							
+
+
+						</h:form>
+					</div>
+				</div> 
+ 
+
+    </ui:define>		
+</ui:composition>		
+</html>

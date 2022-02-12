@@ -51,11 +51,14 @@ public class Factura implements Serializable {
 	@Column(name = "fac_total")
     private double total;
 	
+	@Column(name = "fac_pagadoEstado")
+    private boolean estado=false;
+	
 	@OneToOne()
 	@JoinColumn(name = "Matri_id")
     private Matricula matricula;
 	
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "lib_id")
     private LibroDiario libroDiario;
 
@@ -178,6 +181,15 @@ public class Factura implements Serializable {
     public void setTotal(double total) {
         this.total = total;
     }
+    
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 
 	@Override
 	public String toString() {

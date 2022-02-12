@@ -58,4 +58,13 @@ public List<Factura> getFacturas(){
 		
 	}
 
+public void updateEstado(int id, boolean estado) {
+	String jpql ="UPDATE Factura SET estado= ?1 WHERE id = ?2";
+	Query query=em.createQuery(jpql, Factura.class);
+	query.setParameter(1, estado);
+	query.setParameter(2, id);
 }
+
+}
+
+

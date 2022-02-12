@@ -22,15 +22,15 @@
 		<h:form>
 			<div class="wrap-table100">
 				<div class="table100">
-					<ui:repeat var="car" value="#{matriculaBean.materias}"
+					<ui:repeat var="mat" value="#{matriculaBean.materias}"
 						id="folioTable">
-						<h3>#{car.nombre}</h3>
-						<h:inputHidden id="materiaID" value="#{car.id}" >
+						<h3>#{mat.nombre}</h3>
+						<h:inputHidden id="materiaID" value="#{mat.id}" >
 						<!--  <f:ajax execute="materiaID" render="mytable" listener="#{matriculaBean.gruposTable()}"/> -->
 						</h:inputHidden>
 						
 							<h:dataTable id="mytable" var="gru" class="table table-striped"
-								value="#{matriculaBean.grupos}">
+								value="#{mat.grupos}">
 
 								<h:column>
 									<f:facet name="header" class="table100-head">ID</f:facet>
@@ -57,7 +57,7 @@
 										#{gru.horario.espacio.nombreEdificio}
 								</h:column>
 								<h:column>
-									<f:facet name="header" class="table100-head">Nivel</f:facet>
+									<f:facet name="header" class="table100-head">Aula</f:facet>
 										#{gru.horario.espacio.numeroAula}
 								</h:column>
 								<h:column>

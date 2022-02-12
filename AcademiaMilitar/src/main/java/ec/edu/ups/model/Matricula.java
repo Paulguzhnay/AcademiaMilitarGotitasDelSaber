@@ -35,7 +35,7 @@ public class Matricula implements Serializable {
 	@Column(name = "matri_nivel")
 	private int nivel;
 
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "est_id")
     private Estudiante estudiante;
 	
@@ -47,8 +47,19 @@ public class Matricula implements Serializable {
 	@JoinColumn(name = "fact_id")
     private Factura factura;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "matricula_id")
+	private List<MatriculaMaterias> matMaterias;
 
-    public Factura getFactura() {
+    public List<MatriculaMaterias> getMatMaterias() {
+		return matMaterias;
+	}
+
+	public void setMatMaterias(List<MatriculaMaterias> matMaterias) {
+		this.matMaterias = matMaterias;
+	}
+
+	public Factura getFactura() {
 		return factura;
 	}
 
