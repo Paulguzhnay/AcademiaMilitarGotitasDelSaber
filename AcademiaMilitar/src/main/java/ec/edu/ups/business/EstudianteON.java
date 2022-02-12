@@ -8,7 +8,7 @@ import ec.edu.ups.dao.EstudianteDAO;
 import ec.edu.ups.model.*;
 
 @Stateless
-public class EstudianteON implements EstudianteONRemote {
+public class EstudianteON implements EstudianteONRemote, EstudianteONLocal {
 
 	
 	@Inject
@@ -22,4 +22,7 @@ public class EstudianteON implements EstudianteONRemote {
 		return daoEstudiante.getList();
 	}
 	
+	public Estudiante buscar(int cedula) {
+		return daoEstudiante.read(cedula);
+	}
 }

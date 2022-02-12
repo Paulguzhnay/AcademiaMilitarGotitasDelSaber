@@ -29,17 +29,8 @@ public class Materia implements Serializable{
 	@Column(name = "mate_nivel")
     private int nivel;
 	
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-    private Matricula matricula;
+
 	
-	@OneToOne
-	@JoinColumn(name = "doc_id")
-    private Docente docente;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "gru_id")
-    private List<Grupo> grupos;
 
     public void setId(int id) {
 		this.id = id;
@@ -57,13 +48,7 @@ public class Materia implements Serializable{
         this.nombre = nombre;
     }
 
-    public Docente getDocente() {
-        return docente;
-    }
-
-    public void setDocente(Docente docente) {
-        this.docente = docente;
-    }
+    
 
     public int getNivel() {
         return nivel;
@@ -73,27 +58,11 @@ public class Materia implements Serializable{
         this.nivel = nivel;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
-    }
-
-	public List<Grupo> getGrupos() {
-		return grupos;
+	@Override
+	public String toString() {
+		return "Materia [id=" + id + ", nombre=" + nombre + ", nivel=" + nivel + "]";
 	}
 
-	public void setGrupos(List<Grupo> grupos) {
-		this.grupos = grupos;
-	}
-	
-	public void addGrupo(Grupo gru) {
-		if(grupos == null)
-			grupos = new ArrayList<Grupo>();
-			
-		grupos.add(gru);		
-	}
+    
     
 }

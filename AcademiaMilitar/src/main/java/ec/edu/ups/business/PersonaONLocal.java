@@ -12,6 +12,7 @@ public interface PersonaONLocal {
 	public void insertar(Persona p);
 	
 	public List<Persona> getPersonas();
+	public Persona buscar(String cedula);
 
 }
 

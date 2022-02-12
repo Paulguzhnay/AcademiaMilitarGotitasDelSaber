@@ -38,7 +38,7 @@ public class MateriaDAO {
 		
 		List<Materia> listado= new ArrayList<Materia>();
 		
-		String jpql ="SELECT mat FROM Materia mat";
+		String jpql ="SELECT mat FROM Materia mat ORDER by 1";
 		Query query=em.createQuery(jpql, Materia.class);
 		listado=query.getResultList();
 		

@@ -9,6 +9,7 @@ import ec.edu.ups.dao.InscripcionDAO;
 
 import ec.edu.ups.model.Inscripcion;
 
+
 @Stateless
 public class InscripcionON implements InscripcionONLocal, InscripcionONRemote{
 	@Inject
@@ -20,5 +21,11 @@ public class InscripcionON implements InscripcionONLocal, InscripcionONRemote{
 	
 	public List <Inscripcion> getInscripcions(){
 		return daoInscripcion.getList();
+	}
+	public void guardar(Inscripcion p) throws Exception {
+		if(daoInscripcion.read(p.getId())==null)
+			daoInscripcion.insert(p);
+		else
+			daoInscripcion.update(p);
 	}
 }

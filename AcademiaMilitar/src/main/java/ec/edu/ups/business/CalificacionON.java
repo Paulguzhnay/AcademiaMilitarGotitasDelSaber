@@ -9,12 +9,14 @@ import ec.edu.ups.model.*;
 import ec.edu.ups.dao.*;
 
 @Stateless
-public class CalificacionON  implements CalificacionONRemote{
+public class CalificacionON  implements CalificacionONRemote,CalificacionONLocal{
 
 
 	
 	@Inject
 	private CalificacionDAO daoCalificacion;
+	
+
 
 	public void insertar(Calificacion  cal) throws Exception  {
 		daoCalificacion.insert(cal);

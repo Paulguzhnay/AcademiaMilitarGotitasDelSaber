@@ -12,5 +12,6 @@ public interface PersonaONRemote {
 public void insertar(Persona p) throws Exception;
 	
 	public List<Persona> getPersonas();
+	public Persona buscar(String cedula);
 	
 }

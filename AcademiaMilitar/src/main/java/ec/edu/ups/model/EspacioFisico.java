@@ -24,14 +24,17 @@ public class EspacioFisico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "esp_id")
 	private int id;
+	
 	@Column(name = "esp_nombreEdificio")
 	private String nombreEdificio;
+	
 	@Column(name = "esp_numeroAula")
     private int numeroAula;
 		
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-	private Grupo grupo;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "mate_id")
+	private Materia materia;
+
 
     public void setId(int id) {
 		this.id = id;
@@ -57,12 +60,6 @@ public class EspacioFisico implements Serializable{
         this.numeroAula = numeroAula;
     }
 
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+	
         
 }

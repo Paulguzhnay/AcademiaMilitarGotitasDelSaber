@@ -12,6 +12,8 @@ public interface MateriaONLocal {
 public void insertar(Materia p) throws Exception;
 	
 	public List<Materia> getMaterias();
-
+	public Materia obtenerDatosAsignatura(int id) ;
+	public void eliminarAsignatura(int id);
+	public void guardar(Materia mall) throws Exception;
 }
 

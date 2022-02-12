@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -32,13 +33,10 @@ public class OfertaAcademica implements Serializable {
 	@Column(name = "ofe_modalidad")
     private String modalidad;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "mall_id")
     private MallaCurricular mallaCurricular;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mat_id")
-    private List<Matricula> matriculas;
 	
 	public void setId(int id) {
 		this.id = id;
@@ -80,19 +78,6 @@ public class OfertaAcademica implements Serializable {
         this.mallaCurricular = mallaCurricular;
     }
 
-	public List<Matricula> getMatriculas() {
-		return matriculas;
-	}
-
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
-	}
 	
-	public void addMatricula(Matricula mat) {
-		if(matriculas == null)
-			matriculas = new ArrayList<Matricula>();
-			
-		matriculas.add(mat);		
-	}
        
 }

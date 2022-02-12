@@ -2,12 +2,14 @@ package ec.edu.ups.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,10 +27,11 @@ public class Horario implements Serializable {
 	@Column(name = "hor_hora")
     private String hora;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "esp_id")
     private EspacioFisico espacio;
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(name = "gru_id")
     private Grupo grupo;
 

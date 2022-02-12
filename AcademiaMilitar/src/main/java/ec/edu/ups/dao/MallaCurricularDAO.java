@@ -25,11 +25,21 @@ public class MallaCurricularDAO {
 	}
 	
 	public MallaCurricular  read(int id) {
+		System.out.println("DAO ID "+id);
+		MallaCurricular  mall=em.find(MallaCurricular.class, id);
+		return(mall);
+	}
+
+	
+	public MallaCurricular  read2(int id) {
+		System.out.println("DAO ASIGNATURA "+id);
 		MallaCurricular  mall=em.find(MallaCurricular.class, id);
 		return(mall);
 	}
 	
+	
 	public void delete(int id) {
+		System.out.println("ID DELETE"+id);
 		MallaCurricular mall=em.find(MallaCurricular.class, id);
 		em.remove(mall);
 	}

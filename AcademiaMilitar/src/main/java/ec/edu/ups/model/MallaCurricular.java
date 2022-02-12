@@ -30,9 +30,7 @@ public class MallaCurricular implements Serializable{
 	@Column(name = "mall_horas")
     private int horas;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ofe_id")
-    private List<OfertaAcademica> ofertasAcademicas;
+	
 	
 	public void setId(int id) {
 		this.id = id;
@@ -66,19 +64,6 @@ public class MallaCurricular implements Serializable{
         this.horas = horas;
     }
 
-	public List<OfertaAcademica> getOfertasAcademicas() {
-		return ofertasAcademicas;
-	}
-
-	public void setOfertasAcademicas(List<OfertaAcademica> ofertasAcademicas) {
-		this.ofertasAcademicas = ofertasAcademicas;
-	}
 	
-	public void addOfertaAcademica(OfertaAcademica ofe) {
-		if(ofertasAcademicas == null)
-			ofertasAcademicas = new ArrayList<OfertaAcademica>();
-			
-		ofertasAcademicas.add(ofe);		
-	}
     
 }

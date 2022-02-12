@@ -22,4 +22,7 @@ public class PersonaON implements PersonaONRemote, PersonaONLocal {
 		return daoPersona.getList();
 	}
 	
+	public Persona buscar(String cedula) {
+		return daoPersona.read(cedula);
+	}
 }

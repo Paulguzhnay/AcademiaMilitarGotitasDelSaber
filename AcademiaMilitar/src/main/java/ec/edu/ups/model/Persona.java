@@ -38,17 +38,6 @@ public class Persona implements Serializable {
 	@Column(name = "per_celular")
     private String celular;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "doc_id")
-    private Docente docentes;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "est_id")
-    private Estudiante estudiantes;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ins_id")
-    private Inscripcion inscripciones;
 
 
 	
@@ -108,29 +97,13 @@ public class Persona implements Serializable {
         this.celular = celular;
     }
 
-	public Docente getDocentes() {
-		return docentes;
+	@Override
+	public String toString() {
+		return "Persona [cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNacimiento="
+				+ fechaNacimiento + ", genero=" + genero + ", direccion=" + direccion + ", celular=" + celular + "]";
 	}
 
-	public void setDocentes(Docente docentes) {
-		this.docentes = docentes;
-	}
-
-	public Estudiante getEstudiantes() {
-		return estudiantes;
-	}
-
-	public void setEstudiantes(Estudiante estudiantes) {
-		this.estudiantes = estudiantes;
-	}
-
-	public Inscripcion getInscripciones() {
-		return inscripciones;
-	}
-
-	public void setInscripciones(Inscripcion inscripciones) {
-		this.inscripciones = inscripciones;
-	}
+	
     
     
 }
