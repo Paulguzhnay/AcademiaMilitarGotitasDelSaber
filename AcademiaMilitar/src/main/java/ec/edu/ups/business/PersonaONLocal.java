@@ -14,6 +14,7 @@ public interface PersonaONLocal {
 	public List<Persona> getPersonas();
 	public Persona getEstudiante(String cedula);
 	public List<Persona> getEstudiantes(String cedula);
+	public void update(Persona p);
 
 }
 

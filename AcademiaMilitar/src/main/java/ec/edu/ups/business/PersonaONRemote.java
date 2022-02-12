@@ -14,5 +14,6 @@ public void insertar(Persona p) throws Exception;
 	public List<Persona> getPersonas();
 	public Persona getEstudiante(String cedula);
 	public List<Persona> getEstudiantes(String cedula);
+	public void update(Persona p);
 	
 }

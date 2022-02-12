@@ -107,24 +107,19 @@ public class inscripcionBean implements Validator {
 	}
 	
 	public String crearPassword() {
-		
 		int length = 12;
 		String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
 	    String CHAR_UPPER = CHAR_LOWER.toUpperCase();
 	    String NUMBER = "0123456789";
-
 	    String DATA_FOR_RANDOM_STRING = CHAR_LOWER + CHAR_UPPER + NUMBER;
 	    SecureRandom random = new SecureRandom();
-	    
 	    if (length < 1) throw new IllegalArgumentException();
 	    StringBuilder sb = new StringBuilder(length);
-	    
 	    for (int i = 0; i < length; i++) {
 	        int rndCharAt = random.nextInt(DATA_FOR_RANDOM_STRING.length());
 	        char rndChar = DATA_FOR_RANDOM_STRING.charAt(rndCharAt);
 	        sb.append(rndChar);
 	    }
-
 	    return sb.toString();
 	}
 
@@ -172,49 +167,47 @@ public class inscripcionBean implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		 	String cedula1 = (String) value;
-			System.out.println("HOLAAAA"+cedula1);
-			boolean cedulaCorrecta = false;
+		String cedula1 = (String) value;
+		System.out.println("HOLAAAA"+cedula1);
+		boolean cedulaCorrecta = false;	 
+		try {
+			if (cedula1.length() == 10){
+				int tercerDigito = Integer.parseInt(cedula1.substring(2, 3));
+				if (tercerDigito < 6) {
+					int[] coefValCedula = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
+					int verificador = Integer.parseInt(cedula1.substring(9,10));
+					int suma = 0;
+					int digito = 0;
+					for (int i = 0; i < (cedula1.length() - 1); i++) {
+						digito = Integer.parseInt(cedula1.substring(i, i + 1))* coefValCedula[i];
+						suma += ((digito % 10) + (digito / 10));
+					}
 			 
-			try {
-				if (cedula1.length() == 10){
-					int tercerDigito = Integer.parseInt(cedula1.substring(2, 3));
-					if (tercerDigito < 6) {
-						int[] coefValCedula = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
-						int verificador = Integer.parseInt(cedula1.substring(9,10));
-						int suma = 0;
-						int digito = 0;
-						for (int i = 0; i < (cedula1.length() - 1); i++) {
-						 digito = Integer.parseInt(cedula1.substring(i, i + 1))* coefValCedula[i];
-						 suma += ((digito % 10) + (digito / 10));
-						}
-			 
-						if ((suma % 10 == 0) && (suma % 10 == verificador)) {
-							cedulaCorrecta = true;
-						}else if ((10 - (suma % 10)) == verificador) {
-							cedulaCorrecta = true;
-						} else {
-							cedulaCorrecta = false;
-						}
-					}else {
+					if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+						cedulaCorrecta = true;
+					}else if ((10 - (suma % 10)) == verificador) {
+						cedulaCorrecta = true;
+					} else {
 						cedulaCorrecta = false;
 					}
-				} else {
+				}else {
 					cedulaCorrecta = false;
 				}
-			} catch (NumberFormatException nfe) {
+			} else {
 				cedulaCorrecta = false;
-			} catch (Exception err) {
-				System.out.println("Una excepcion ocurrio en el proceso de validadcion");
-				cedulaCorrecta = false;
-				throw new ValidatorException(new FacesMessage("Error de Validación"));
 			}
-			 
-			if (!cedulaCorrecta) {
-				System.out.println("La Cédula ingresada es Incorrecta");
-				throw new ValidatorException(new FacesMessage("Cédula Incorrecta"));
-			}
-		
+		} catch (NumberFormatException nfe) {
+			cedulaCorrecta = false;
+		} catch (Exception err) {
+			System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+			cedulaCorrecta = false;
+			throw new ValidatorException(new FacesMessage("Error de Validación"));
+		}	 
+			
+		if (!cedulaCorrecta) {
+			System.out.println("La Cédula ingresada es Incorrecta");
+			throw new ValidatorException(new FacesMessage("Cédula Incorrecta"));
+		}
 	}
 
 }

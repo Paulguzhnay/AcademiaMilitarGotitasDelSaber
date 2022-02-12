@@ -32,4 +32,8 @@ public class PersonaON implements PersonaONRemote, PersonaONLocal {
 		result.add(daoPersona.read(cedula));
 		return result;
 	}
+	
+	public void update(Persona p) {
+		daoPersona.update(p);
+	}
 }

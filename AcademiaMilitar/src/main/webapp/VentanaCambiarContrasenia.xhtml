@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="template7/plantillaCambiarcontrasenia.xhtml">
+    <ui:define name="title">
+        Inscripciones
+    </ui:define>
+    <ui:define name="content">
+    	<h5>(*) Son campos obligatorios</h5> 
+		<h:form >
+			<br />
+			<h:outputLabel value="Correo Institucional*" style="float: rigth;color:black;"/><br />
+			<h:inputText id="cedula2" required="true" requiredMessage="*Campo Obligatorio" value="#{iniciarSesionBean.iniciarSesion.usuario}" style="width: 50%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: black" />
+			<h:message for="cedula2" id="errorC2" style="color: red" /><br />
+			<h:outputLabel value="Nueva Contraseña*" style="float: rigth;color:black;"/><br />
+			<h:inputSecret id="clave2" required="true" requiredMessage="*Campo Obligatorio" value="#{iniciarSesionBean.iniciarSesion.contrasenia}" style="width: 50%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: black"/>				
+			<h:message for="clave2" id="errorC3" style="color: red" /><br />	<br />	
+			<h:commandButton action="#{iniciarSesionBean.cambiarContrasenia()}" value="Cambiar Contraseña" class="btn btn-primary submit" style="float: none; width: 30%; height: 35px; border: none; border-radius: 20px; margin-top: -8px;color: rgba(255,255,255, 1); background-color: rgba(16,89,255, 1);"/>					
+		</h:form>
+	</ui:define>
+ 
+</ui:composition>
+</html>
