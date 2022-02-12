@@ -35,9 +35,21 @@ public class Inscripcion implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "per_cedula" )
-    private Persona persona;
+    private Persona persona = new Persona();
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "log_id")
+    private IniciarSesion iniciarSesion = new IniciarSesion();
 
-    public void setId(int id) {
+    public IniciarSesion getIniciarSesion() {
+		return iniciarSesion;
+	}
+
+	public void setIniciarSesion(IniciarSesion iniciarSesion) {
+		this.iniciarSesion = iniciarSesion;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     

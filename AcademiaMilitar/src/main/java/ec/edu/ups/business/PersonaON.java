@@ -1,5 +1,6 @@
 package ec.edu.ups.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -22,4 +23,13 @@ public class PersonaON implements PersonaONRemote, PersonaONLocal {
 		return daoPersona.getList();
 	}
 	
+	public Persona getEstudiante(String cedula) {
+		return daoPersona.read(cedula);
+	}
+	
+	public List<Persona> getEstudiantes(String cedula) {
+		List<Persona> result = new ArrayList<Persona>();
+		result.add(daoPersona.read(cedula));
+		return result;
+	}
 }

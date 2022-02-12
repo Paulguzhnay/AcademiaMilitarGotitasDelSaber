@@ -48,7 +48,6 @@ public class GestionInscripcion extends HttpServlet {
 		p.setApellidos("Reinoso Villa");
 		p.setCelular("0984709368");
 		p.setDireccion("Monay");
-		p.setFechaNacimiento(new Date());
 		p.setGenero("Hombre");
 		
 		

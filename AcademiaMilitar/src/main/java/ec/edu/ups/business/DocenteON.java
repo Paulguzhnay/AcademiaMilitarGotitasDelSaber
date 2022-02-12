@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import ec.edu.ups.dao.*;
 
 @Stateless
-public class DocenteON implements DocenteONRemote{
+public class DocenteON implements DocenteONRemote, DocenteONLocal{
 	
 	@Inject
 	private DocenteDAO daoDocente;

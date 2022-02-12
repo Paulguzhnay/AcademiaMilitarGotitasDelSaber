@@ -12,7 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -48,12 +50,32 @@ public class Factura implements Serializable {
     private double descuento;
 	@Column(name = "fac_total")
     private double total;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "lib_id")
-    private List<LibroDiario> libroDiarios;
 	
-    public void setId(int id) {
+	@OneToOne()
+	@JoinColumn(name = "Matri_id")
+    private Matricula matricula;
+	
+	@ManyToOne()
+	@JoinColumn(name = "lib_id")
+    private LibroDiario libroDiario;
+
+    public LibroDiario getLibroDiario() {
+		return libroDiario;
+	}
+
+	public void setLibroDiario(LibroDiario libroDiario) {
+		this.libroDiario = libroDiario;
+	}
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     
@@ -157,19 +179,5 @@ public class Factura implements Serializable {
         this.total = total;
     }
 
-	public List<LibroDiario> getLibroDiarios() {
-		return libroDiarios;
-	}
-
-	public void setLibroDiarios(List<LibroDiario> libroDiarios) {
-		this.libroDiarios = libroDiarios;
-	}
 	
-	public void addLibrosDiarios(LibroDiario lib) {
-		if(libroDiarios == null)
-			libroDiarios = new ArrayList<LibroDiario>();
-			
-		libroDiarios.add(lib);		
-	}
-        
 }

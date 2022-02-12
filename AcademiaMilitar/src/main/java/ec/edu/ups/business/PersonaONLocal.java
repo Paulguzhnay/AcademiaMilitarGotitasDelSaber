@@ -12,6 +12,8 @@ public interface PersonaONLocal {
 	public void insertar(Persona p);
 	
 	public List<Persona> getPersonas();
+	public Persona getEstudiante(String cedula);
+	public List<Persona> getEstudiantes(String cedula);
 
 }
 

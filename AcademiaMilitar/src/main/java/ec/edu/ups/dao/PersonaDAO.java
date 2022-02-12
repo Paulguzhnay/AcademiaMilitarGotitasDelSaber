@@ -24,7 +24,7 @@ public class PersonaDAO {
 		em.merge(per);
 	}
 	
-	public Persona  read(int id) {
+	public Persona  read(String id) {
 		Persona  per=em.find(Persona.class, id);
 		return(per);
 	}

@@ -11,5 +11,7 @@ public interface IniciarSesionONRemote {
 	
 	public void insertar(IniciarSesion in) throws Exception;
 	
-	public List <IniciarSesion> getHorario();
+	public List <IniciarSesion> getIniciarSesion();
+	
+	public void cambiarContrasenia(IniciarSesion i);
 }

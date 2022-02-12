@@ -17,5 +17,13 @@ Note: upgrading to JSF 2.3 will cause currently deployment errors if the web pro
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for
       creating @Named managed beans. -->
+	<validator>
+		<validator-id>cedulaIncorrecta</validator-id>
+		<validator-class>ec.edu.ups.bean.inscripcionBean</validator-class>
+	</validator>
+	<validator>
+		<validator-id>correoIncorrecto</validator-id>
+		<validator-class>ec.edu.ups.bean.correoBean</validator-class>
+	</validator>
 
 </faces-config>

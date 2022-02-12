@@ -29,9 +29,7 @@ public class EspacioFisico implements Serializable{
 	@Column(name = "esp_numeroAula")
     private int numeroAula;
 		
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-	private Grupo grupo;
+	
 
     public void setId(int id) {
 		this.id = id;
@@ -57,12 +55,6 @@ public class EspacioFisico implements Serializable{
         this.numeroAula = numeroAula;
     }
 
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+	
         
 }
