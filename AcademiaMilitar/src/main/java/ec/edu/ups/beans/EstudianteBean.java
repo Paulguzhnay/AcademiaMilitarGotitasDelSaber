@@ -182,9 +182,7 @@ public class EstudianteBean {
 					cal = new Calificacion();
 					materia = new Materia();
 					estudiante = new Estudiante();	
-					
-					
-
+	
 							int idCalMateria =listCalificaciones.get(i).getMateria().getId();
 							
 							if (i<listMateria.size()) {
@@ -192,8 +190,7 @@ public class EstudianteBean {
 								nivelMateria=listMateria.get(i).getNivel();		
 								
 							}
-
-										
+									
 								if((idCalMateria==idMateria)&&(nivel==nivelMateria)) {
 									materia.setId(listMateria.get(i).getId());
 									materia.setNivel(listMateria.get(i).getNivel());

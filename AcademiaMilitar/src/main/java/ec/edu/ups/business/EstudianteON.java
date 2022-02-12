@@ -8,7 +8,7 @@ import ec.edu.ups.dao.EstudianteDAO;
 import ec.edu.ups.model.*;
 
 @Stateless
-public class EstudianteON implements EstudianteONRemote, EstudianteONLocal {
+public class EstudianteON implements EstudianteONRemote,  EstudianteONLocal {
 
 	
 	@Inject

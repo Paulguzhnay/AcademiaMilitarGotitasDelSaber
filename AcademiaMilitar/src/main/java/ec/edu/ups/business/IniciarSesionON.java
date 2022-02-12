@@ -9,7 +9,7 @@ import ec.edu.ups.dao.*;
 import ec.edu.ups.model.*;
 
 @Stateless
-public class IniciarSesionON implements IniciarSesionONLocal,IniciarSesionONRemote {
+public class IniciarSesionON implements IniciarSesionONLocal, IniciarSesionONRemote {
 	@Inject
 	private IniciarSesionDAO daoSesion;
 	

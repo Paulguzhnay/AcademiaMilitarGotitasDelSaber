@@ -13,7 +13,7 @@ import ec.edu.ups.model.MallaCurricular;
 
 
 @Stateless
-public class MallaCurricularON implements MallaCurricularONLocal, MallaCurricularONRemote{
+public class MallaCurricularON implements MallaCurricularONLocal,  MallaCurricularONRemote{
 
 	@Inject
 	private MallaCurricularDAO daoMalla;

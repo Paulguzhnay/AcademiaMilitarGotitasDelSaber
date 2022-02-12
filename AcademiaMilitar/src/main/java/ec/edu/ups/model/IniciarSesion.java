@@ -73,5 +73,11 @@ public class IniciarSesion implements Serializable {
     public String getContrasenia() {
         return contrasenia;
     }
+
+	@Override
+	public String toString() {
+		return "IniciarSesion [id=" + id + ", usuario=" + usuario + ", contrasenia=" + contrasenia + ", docente="
+				+ docente + ", inscripcion=" + inscripcion + "]";
+	}
         
 }

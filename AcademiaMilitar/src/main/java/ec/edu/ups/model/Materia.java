@@ -29,6 +29,8 @@ public class Materia implements Serializable{
 	@Column(name = "mate_nivel")
     private int nivel;
 	
+	
+	
 
 	
 

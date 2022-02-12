@@ -24,17 +24,12 @@ public class EspacioFisico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "esp_id")
 	private int id;
-	
 	@Column(name = "esp_nombreEdificio")
 	private String nombreEdificio;
-	
 	@Column(name = "esp_numeroAula")
     private int numeroAula;
 		
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mate_id")
-	private Materia materia;
-
+	
 
     public void setId(int id) {
 		this.id = id;

@@ -31,9 +31,7 @@ public class Horario implements Serializable {
 	@JoinColumn(name = "esp_id")
     private EspacioFisico espacio;
 	
-	@ManyToOne
-	@JoinColumn(name = "gru_id")
-    private Grupo grupo;
+
 
     public void setId(int id) {
 		this.id = id;
@@ -67,13 +65,7 @@ public class Horario implements Serializable {
         this.espacio = espacio;
     }
 
-    public Grupo getGrupo() {
-        return grupo;
-    }
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
     
     
 }

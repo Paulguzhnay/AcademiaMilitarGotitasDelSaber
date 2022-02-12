@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TBL_Grupo")
@@ -36,9 +37,31 @@ public class Grupo implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "mate_id")
     private Materia materia;
+	
+	@ManyToOne
+	@JoinColumn(name = "hor_id")
+    private Horario horario;
     
+	@Transient
+	private boolean seleccionado;
 
-    public void setId(int id) {
+    public boolean isSeleccionado() {
+		return seleccionado;
+	}
+
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
+	}
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     
@@ -77,6 +100,12 @@ public class Grupo implements Serializable{
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
+
+	@Override
+	public String toString() {
+		return "Grupo [id=" + id + ", numeroGrupo=" + numeroGrupo + ", nivel=" + nivel + ", docente=" + docente
+				+ ", materia=" + materia + ", horario=" + horario + ", seleccionado=" + seleccionado + "]";
+	}
 
 
 	

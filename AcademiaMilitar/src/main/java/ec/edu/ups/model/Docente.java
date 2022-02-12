@@ -89,5 +89,13 @@ public class Docente implements Serializable {
         this.persona = persona;
     }
 
+	@Override
+	public String toString() {
+		return "Docente [id=" + id + ", titulo=" + titulo + ", gradoTiulo=" + gradoTiulo + ", especializacion="
+				+ especializacion + ", persona=" + persona + ", iniciarSesion=" + iniciarSesion + "]";
+	}
+
+
+
 
 }
