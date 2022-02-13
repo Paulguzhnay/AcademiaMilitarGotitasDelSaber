@@ -34,12 +34,13 @@ public class GrupoDAO {
 		em.remove(gru);
 	}
 	
-	public List<Grupo> getList(){
+	public List<Grupo> getList(int idNivel){
 		
 		List<Grupo> listado= new ArrayList<Grupo>();
-		
-		String jpql ="SELECT gru FROM Grupo gru";
+		System.out.println("ID DESDE EL DAO "+idNivel);
+		String jpql ="SELECT gru FROM Grupo gru WHERE gru.materia.nivel=?1";
 		Query query=em.createQuery(jpql, Grupo.class);
+		query.setParameter(1, idNivel);
 		listado=query.getResultList();
 		
 		return listado;

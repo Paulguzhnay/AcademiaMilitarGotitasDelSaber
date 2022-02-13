@@ -1,5 +1,6 @@
 package ec.edu.ups.business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;

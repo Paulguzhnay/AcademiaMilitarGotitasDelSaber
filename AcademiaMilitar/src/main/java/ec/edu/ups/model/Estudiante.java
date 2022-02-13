@@ -60,6 +60,11 @@ public class Estudiante implements Serializable {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "Estudiante [id=" + id + ", cicloCursando=" + cicloCursando + ", persona=" + persona + "]";
+	}
+
 	
     
 }

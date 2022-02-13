@@ -85,13 +85,44 @@
 							<!--NOMBRE EDIFICIO -->
 							<div class="counter_form_title">Registro de Edificio</div>
 							<h3> Nombre del Edificio</h3>
-							<h:inputText  value="#{asignaturaBean.espF.nombreEdificio}"  class="counter_input" placeholder="Etica" required="required"
-							style="width: 500px;background: rgba(192,192,192,0.3); color:black"/>
+							<h:selectOneMenu value="#{asignaturaBean.espF.nombreEdificio}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:black ">
+							   	<f:selectItem itemValue="No selecciono edificio" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="Edificio Militar" itemLabel="Edificio Militar" />
+								<f:selectItem itemValue="Edificio Gotitas" itemLabel="Edificio Gotitas" />
+								<f:selectItem itemValue="Edificio del Saber" itemLabel="Edificio del Saber" />
+							   	<f:selectItem itemValue="Edificio de la Academia" itemLabel="Edificio de la Academia" />
+								<f:selectItem itemValue="Edificio Central" itemLabel="Edificio Central" />
+							</h:selectOneMenu>
+							
+							
+							
 							<!--NUMERO DE AULA -->
-							<h3>Numero del Aula</h3>							
-							<h:inputText  value="#{asignaturaBean.espF.numeroAula}"  class="counter_input" placeholder="100" required="required" 
-							style="width: 500px;background: rgba(192,192,192,0.3); color:black"/>								
-
+							<h3>Numero del Aula</h3>	
+							<h:selectOneMenu value="#{asignaturaBean.espF.numeroAula}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:black ">						
+							   	<f:selectItem itemValue="No selecciono numero de Aula" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="1" itemLabel="1" />
+								<f:selectItem itemValue="2" itemLabel="2" />
+								<f:selectItem itemValue="3" itemLabel="3" />
+							   	<f:selectItem itemValue="4" itemLabel="4" />
+								<f:selectItem itemValue="5" itemLabel="5" />
+								<f:selectItem itemValue="6" itemLabel="6" />
+							   	<f:selectItem itemValue="7" itemLabel="7" />
+								<f:selectItem itemValue="8" itemLabel="8" />
+								<f:selectItem itemValue="9" itemLabel="9" />
+								<f:selectItem itemValue="10" itemLabel="10" />  		
+								<f:selectItem itemValue="11" itemLabel="11" />
+								<f:selectItem itemValue="12" itemLabel="12" />
+								<f:selectItem itemValue="13" itemLabel="13" />
+							   	<f:selectItem itemValue="14" itemLabel="14" />
+								<f:selectItem itemValue="15" itemLabel="15" />
+								<f:selectItem itemValue="16" itemLabel="16" />
+							   	<f:selectItem itemValue="17" itemLabel="17" />
+								<f:selectItem itemValue="18" itemLabel="18" />
+								<f:selectItem itemValue="19" itemLabel="19" />
+								<f:selectItem itemValue="20" itemLabel="20" /> 					
+							</h:selectOneMenu>
 							<br></br>
 							<!--HORARIO-->
 							<!--DIA DE CLASES -->
@@ -99,23 +130,23 @@
 							<h3> Dia</h3>
 							<h:selectOneMenu value="#{asignaturaBean.horario.dia}" style="width: 500px;height: 35px; padding-left: 15px; 
 							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:black ">
-							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
-							   	<f:selectItem itemValue="1" itemLabel="Lunes" />
-								<f:selectItem itemValue="2" itemLabel="Martes" />
-								<f:selectItem itemValue="3" itemLabel="Miercoles" />
-							   	<f:selectItem itemValue="4" itemLabel="Jueves" />
-								<f:selectItem itemValue="5" itemLabel="Viernes" />
+							   	<f:selectItem itemValue="No selecciono dia" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="Lunes" itemLabel="Lunes" />
+								<f:selectItem itemValue="Martes" itemLabel="Martes" />
+								<f:selectItem itemValue="Miercoles" itemLabel="Miercoles" />
+							   	<f:selectItem itemValue="Jueves" itemLabel="Jueves" />
+								<f:selectItem itemValue="Viernes" itemLabel="Viernes" />
 							</h:selectOneMenu>
 							<!--HORA DE CLASES-->
 							<h3>Hora</h3>							
 							<h:selectOneMenu value="#{asignaturaBean.horario.hora}" style="width: 500px;height: 35px; padding-left: 15px; 
 							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:black ">
-							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
-							   	<f:selectItem itemValue="1" itemLabel="07:00-09:00" />
-								<f:selectItem itemValue="2" itemLabel="09:00-11:00" />
-								<f:selectItem itemValue="3" itemLabel="11:00-13:00" />
-							   	<f:selectItem itemValue="4" itemLabel="13:00-15:00" />
-								<f:selectItem itemValue="5" itemLabel="15:00-17:00" />
+							   	<f:selectItem itemValue="No selecciono hora" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="07:00-09:00" itemLabel="07:00-09:00" />
+								<f:selectItem itemValue="09:00-11:00" itemLabel="09:00-11:00" />
+								<f:selectItem itemValue="11:00-13:00" itemLabel="11:00-13:00" />
+							   	<f:selectItem itemValue="13:00-15:00" itemLabel="13:00-15:00" />
+								<f:selectItem itemValue="15:00-17:00" itemLabel="15:00-17:00" />
 							</h:selectOneMenu>
 
 

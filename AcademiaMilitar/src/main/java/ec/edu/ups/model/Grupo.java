@@ -35,7 +35,7 @@ public class Grupo implements Serializable{
 	@JoinColumn(name = "doc_id")
     private Docente docente;
 	@ManyToOne
-	@JoinColumn(name = "mate_id")
+	@JoinColumn(name = "mat_id")
     private Materia materia;
 	
 	@ManyToOne

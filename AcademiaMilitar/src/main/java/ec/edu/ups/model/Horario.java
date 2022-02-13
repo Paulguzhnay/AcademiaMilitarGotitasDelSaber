@@ -65,6 +65,11 @@ public class Horario implements Serializable {
         this.espacio = espacio;
     }
 
+	@Override
+	public String toString() {
+		return "Horario [id=" + id + ", dia=" + dia + ", hora=" + hora + ", espacio=" + espacio + "]";
+	}
+
 
     
     

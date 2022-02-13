@@ -106,47 +106,43 @@ public class LibroBean implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		System.out.println("FECHA1   "+fechaDate);
 		for (int i = 0; i < listLibro.size(); i++) {
 			
-			System.out.println("FECHA2 "+listLibro.get(i).getFecha());
 			
 			if (fechaDate.equals(listLibro.get(i).getFecha())) {
-				System.out.println("HOLA FECHAS");
 				libro= new LibroDiario();
 				sumaA=listLibro.get(i).getValorTotal();
 				suma=suma+sumaA;
 				
-				System.out.println("Esta es la suma"+suma);
 				libro.setId(listLibro.get(i).getId());
 				libro.setFecha(listLibro.get(i).getFecha());
 				libro.setValorTotal(sumaA);
 				listLibroFinal.add(libro);
 			}
-			
-			System.out.println("Size libro fecha "+listLibro.size());
-			System.out.println("Size libro final "+listLibroFinal.size());
-			
-			
-			for (int j = 0; j < listLibro.size(); j++) {
-				System.out.println(listLibro.get(j).getId());
-				System.out.println(listLibro.get(j).getFecha());
-				System.out.println(listLibro.get(j).getValorTotal());
-			}
-			
-			
 		}	
-		
-		System.out.println("*****************************************************************************");
-		for (int j = 0; j < listLibroFinal.size(); j++) {
-			System.out.println("FINAL "+listLibroFinal.get(j).getId());
-			System.out.println("FINAL FECHA "+listLibroFinal.get(j).getFecha());
-			System.out.println("FINAL VALOR "+listLibroFinal.get(j).getValorTotal());
-			
-		}
-
 		return null;
 	}
+	
+	/*public void Libro() {
+		Date fecha2;
+		
+		SimpleDateFormat formato = new SimpleDateFormat ("yyyy-MM-dd");
+		 Date fechaDate = null;
+		try {
+			fechaDate = formato.parse(fecha);
+	
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		System.out.println();
+		System.out.println(formato);
+		System.out.println(fechaDate);
+		listLibro = libroON.getLibro(fechaDate);
+		System.out.println(listLibro);
+	}*/
 		
 	
 }

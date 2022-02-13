@@ -22,8 +22,8 @@ public class CalificacionON  implements CalificacionONRemote,CalificacionONLocal
 		daoCalificacion.insert(cal);
 	}
 	
-	public List <Calificacion> getCalificacion(){
-		return daoCalificacion.getList();
+	public List <Calificacion> getCalificacion(int nivel, String idEst){
+		return daoCalificacion.getList(nivel,idEst);
 	}
 	
 

@@ -13,6 +13,6 @@ public interface CalificacionONLocal {
 	
 	public void insertar(Calificacion  cal) throws Exception;
 	
-	public List <Calificacion> getCalificacion();
+	public List <Calificacion> getCalificacion(int nivel, String idEst);
 	
 }

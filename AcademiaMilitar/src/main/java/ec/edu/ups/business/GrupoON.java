@@ -18,8 +18,8 @@ public class GrupoON implements GrupoONRemote, GrupoONLocal{
 		daoGrupo.insert(g);
 	}
 	
-	public List <Grupo> getGrupo(){
-		return daoGrupo.getList();
+	public List <Grupo> getGrupo(int idNivel){
+		return daoGrupo.getList( idNivel);
 	}
 	
 }

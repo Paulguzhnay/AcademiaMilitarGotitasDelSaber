@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+       <h:head>
+      	<f:metadata>
+		<f:viewParam name="cedula" value="#{estudianteBean2.cedula}"></f:viewParam>
+		
+	</f:metadata>     
+      </h:head>
+ 
+      <body></body>
+      
+<ui:composition template="template/plantillaU.xhtml">
+    <ui:define name="title">
+        Calificaciones
+    </ui:define>
+
+    <ui:define name="menu">
+     <ul class="sidebar-menu do-nicescrol">
+      <li class="sidebar-header">MENU DE NAVEGACIÓN</li>
+      <li>
+        <ui:insert name="inicio" />
+      </li>
+
+      <li>
+        <a href="CalificacionesEstudiante.xhtml">
+          <i class="zmdi zmdi-grid"></i> <span>Consultar Notas</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a href="icons.html">
+          <i class="zmdi zmdi-invert-colors"></i> <span>Estado de Cuenta</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a href="calendar.html">
+          <i class="zmdi zmdi-calendar-check"></i> <span>Matricula</span>
+          <small class="badge float-right badge-light">New</small>
+        </a>
+      </li>
+
+      <li>
+
+      </li>
+
+      <li>
+        <a href="login.html" target="_blank">
+          <i class="zmdi zmdi-lock"></i> <span>Login</span>
+        </a>
+      </li>
+
+       <li>
+       <ui:insert name="matricula" />
+        <!--  <a href="register.html" target="_blank">
+          <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
+        </a>-->
+      </li>
+
+
+    </ul>
+    </ui:define>
+
+
+
+    <ui:define name="content"> 
+                <div class="card-body" var="cal">
+						<h:form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+
+							<h:outputLabel value="CEDULA" />
+							<h:inputText  type="text"  value="#{estudianteBean2.cedula}"   class="form-control"  required="required"/>
+
+							<h:outputLabel value="Nivel" />
+							<h:inputText  type="text"  value="#{estudianteBean2.nivel}"   class="form-control"  required="required"/>
+
+							<br />
+							<!-- BOTON -->
+							<h:commandButton action="#{estudianteBean2.buscarCedula()}" value="Buscar" class="counter_form_button"/>
+
+						</h:form>
+					</div>
+
+    
+    
+                    <div class="card-body">
+                    <h:form>
+                <h:dataTable var="mat"  class="table align-items-center table-flush table-borderless"  value="#{estudianteBean.listCalificaciones}">
+						<h:column>
+							<f:facet name="header">Nombre de la Asignatura      </f:facet>
+							#{mat.materia.nombre}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Notas</f:facet>
+							#{mat.notaObtenida}
+						</h:column>
+
+
+					</h:dataTable>
+			</h:form>
+					</div>
+    
+    
+
+    </ui:define>		
+
+
+</ui:composition>		
+</html>
