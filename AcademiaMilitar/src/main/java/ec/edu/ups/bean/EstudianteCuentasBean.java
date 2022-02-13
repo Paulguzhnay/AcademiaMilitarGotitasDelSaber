@@ -40,8 +40,17 @@ public class EstudianteCuentasBean implements Serializable{
 	private Factura facDetalle=new Factura();
 	static Factura factDetalle2;
 	private List<Factura>detalles=new ArrayList<Factura>();
+	private String fecha;
 	
 
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 
 	public static Factura getFactDetalle2() {
 		return factDetalle2;
@@ -155,7 +164,8 @@ public class EstudianteCuentasBean implements Serializable{
 		System.out.println(this.facDetalle);
 		
 	}
-
+	
+	
 
 
 }

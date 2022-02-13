@@ -31,4 +31,8 @@ public class FacturaON implements FacturaONRemote, FacturaONLocal{
 		return daoFactura.read(id);
 	}
 	
+	public List <Factura> getFacturasFecha(String fecha){
+		return daoFactura.getFacturasFecha(fecha);
+	}
+	
 }

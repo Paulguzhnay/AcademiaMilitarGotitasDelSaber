@@ -14,4 +14,5 @@ public interface FacturaONLocal {
 	public List <Factura> getFacturas();
 	public void actualizar(Factura f) ;
 	public Factura buscar(int id);
+	public List <Factura> getFacturasFecha(String fecha);
 }

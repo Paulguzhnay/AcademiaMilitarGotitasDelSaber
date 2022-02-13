@@ -58,4 +58,17 @@ public List<Grupo> getGrupo(int matId){
 		
 	}
 
+public List<Grupo> getGrupoMatriculado(int gruId){
+	
+	List<Grupo> listado= new ArrayList<Grupo>();
+	
+	String jpql ="SELECT gru FROM Grupo gru WHERE gru.id = ?1";
+	Query query=em.createQuery(jpql, Grupo.class);
+	query.setParameter(1, gruId);
+	listado=query.getResultList();
+	
+	return listado;
+	
+}
+
 }

@@ -50,8 +50,12 @@
     <ui:define name="content">
     <br/>
     <h:form class="search-bar">
-        <h:inputText  type="text" class="form-control" p:placeholder="Enter keywords"></h:inputText>
-        <br></br>
+      <!--   <h:inputText disabled="true" id="buscartxt"  type="hidden" class="form-control" p:placeholder="Ej. YY-MM-DD">
+        
+        	
+        
+        </h:inputText>--> 
+        
         <h:commandButton value="Facturas Canceladas" 
         style=" width:160px;  margin-left: 10px; font-weight: bold; background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #0051de 100%);" immediate="true" >
         <!--  
@@ -105,11 +109,11 @@
 			</h:dataTable>
 			
 			<p:dialog id="dialog" widgetVar="wdialog" header="Detalle de la Factura" modal="true" appendTo="@(body)">
-			
-			<h:dataTable id="deta" style="color: black;"  var="facd" class="table align-items-center table-flush table-borderless" value="#{estudianteCuentasBean.facDetalle}">
+			<p>Detalle de la Factura Nro. </p>
+			<h:dataTable  id="deta" style="color: black; border: 1px solid #000b;"  var="facd" class="table align-items-center table-flush table-borderless" value="#{estudianteCuentasBean.facDetalle}">
 	
-			<h:column>
-					<f:facet name="header">Descripcion</f:facet>
+			<h:column style="border: 1px solid #000b; background-color: coral;">
+					<f:facet style="border: 1px solid #000b; background-color: coral;" name="header">Descripcion</f:facet>
 					#{facd.id}
 				</h:column>
 				<h:column>
@@ -117,7 +121,7 @@
 					#{facd.detalle}
 				</h:column>
 				<h:column>
-					<f:facet name="header">SubTotal</f:facet>
+					<f:facet  name="header">SubTotal</f:facet>
 					#{facd.subtotal}
 				</h:column>
 				<h:column>

@@ -26,4 +26,8 @@ public class GrupoON implements GrupoONRemote, GrupoONLocal{
 		return daoGrupo.getGrupo(matID);
 	}
 	
+	public List <Grupo> getGrupomatriculado(int gruID){
+		return daoGrupo.getGrupoMatriculado(gruID);
+	}
+	
 }

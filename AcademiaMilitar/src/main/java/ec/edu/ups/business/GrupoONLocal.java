@@ -12,4 +12,6 @@ public interface GrupoONLocal {
 	
 	public List <Grupo> getGrupo();
 	public List <Grupo> getGrupo2(int matID);
+	
+	public List <Grupo> getGrupomatriculado(int gruID);
 }

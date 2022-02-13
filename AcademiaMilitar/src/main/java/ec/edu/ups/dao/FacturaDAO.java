@@ -50,7 +50,7 @@ public List<Factura> getFacturas(){
 		
 		List<Factura> listado= new ArrayList<Factura>();
 		
-		String jpql ="SELECT fact FROM Factura fact WHERE fact.";
+		String jpql ="SELECT fact FROM Factura fact";
 		Query query=em.createQuery(jpql, Factura.class);
 		listado=query.getResultList();
 		
@@ -63,6 +63,19 @@ public void updateEstado(int id, boolean estado) {
 	Query query=em.createQuery(jpql, Factura.class);
 	query.setParameter(1, estado);
 	query.setParameter(2, id);
+}
+
+public List<Factura> getFacturasFecha(String fecha){
+	
+	List<Factura> listado= new ArrayList<Factura>();
+	
+	String jpql ="SELECT * FROM Factura TO_CHAR(fecha,'YYYY-MM-DD')= '?1'";
+	Query query=em.createQuery(jpql, Factura.class);
+	query.setParameter(1, fecha);
+	listado=query.getResultList();
+	
+	return listado;
+	
 }
 
 }
