@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{estudiantesBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{estudiantesBean.loadData()}" />
+	</f:metadata>
+
+</h:head>
+
+<ui:composition template="/plantilla3.xhtml">
+	<ui:define name="title">
+        Actualizar Datos
+    </ui:define>
+    <ui:define name="title">
+        Actualizar Datos
+    </ui:define>
+	<ui:define name="content">
+		
+		<div class="card-body">
+			<h4 class="card-title">Actualizar Datos Estudiante</h4><br />
+			<h5>(*) Son campos editables</h5>  
+			<h:form class="forms-sample">
+				<div class="form-group">
+					<label for="txtCedula">Cédula</label>
+					<h:inputText class="form-control" id="txtCedula"
+						value="#{estudiantesBean.persona.cedula}" placeholder="Name" disabled="true">
+						<f:ajax execute="txtCedula" render="txtNombres txtApellido txtDireccions txtTelefono txtCorreo"
+							listener="#{estudiantesBean.loadDataEditar()}" />
+					</h:inputText>
+				</div>
+				<div class="form-group">
+					<label for="txtNombres">Nombres*</label>
+					<h:inputText required="true" requiredMessage="*Campo no puede quedar vacío" class="form-control" id="txtNombres"
+						value="#{estudiantesBean.persona.nombres}" />
+					<h:message for="txtNombres" style="color: red" />
+				</div>
+				<div class="form-group">
+					<label for="txtApellido">Apellidos*</label>
+					<h:inputText required="true" requiredMessage="*Campo no puede quedar vacío" class="form-control" id="txtApellido"
+						value="#{estudiantesBean.persona.apellidos}" />
+					<h:message for="txtApellido" style="color: red" />
+				</div>
+				<div class="form-group">
+					<label for="txtDireccions">Dirección*</label>
+					<h:inputText required="true" requiredMessage="*Campo no puede quedar vacío" value="#{estudiantesBean.persona.direccion}"
+						class="form-control" id="txtDireccions" />
+					<h:message for="txtDireccions" style="color: red" />
+				</div>
+				<div class="form-group">
+					<label for="txtTelefono">Teléfono*</label>
+					<h:inputText required="true" requiredMessage="*Campo no puede quedar vacío" value="#{estudiantesBean.persona.celular}"
+						class="form-control" id="txtTelefono" />
+					<h:message for="txtTelefono" style="color: red" />
+				</div>
+				<div class="form-group">
+					<label for="txtCorreo">Correo Personal</label>
+					<h:inputText required="true" requiredMessage="*Campo no puede quedar vacío" value="#{estudiantesBean.persona.correoPersonal}" disabled="true"
+						class="form-control" id="txtCorreo" />
+					<h:message for="txtCorreo" style="color: red" />
+				</div>
+
+
+				<h:commandButton action="#{estudiantesBean.actualizar(estudiantesBean.persona.cedula)}" value="Guardar"
+					class="btn btn-primary mr-2" />
+
+				<button class="btn btn-light">Cancelar</button>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+

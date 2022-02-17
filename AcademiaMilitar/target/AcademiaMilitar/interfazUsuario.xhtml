@@ -1,0 +1,130 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"> 
+      
+            <f:metadata>
+		<f:viewParam var="pri" name="id" value="#{principalBean.cedula}"></f:viewParam>
+	</f:metadata>
+
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title" >
+        Bienvenido
+    </ui:define>
+
+     <ui:define name="cabezera" >
+        Pagina Personal
+    </ui:define>
+    
+        <ui:define name="inicio" >
+        
+        
+        	<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaInicio(principalBean.cedula)}"
+				value="Inicio">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+
+    <ui:define name="direccion" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.editarDatos(principalBean.cedula)}"
+				value="Datos Personales">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+    
+      <ui:define name="estadoCuenta" >
+       <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaCuentas(principalBean.cedula)}"
+				value="Estado de Cuenta">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+    
+    <ui:define name="matricula" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaMatricula(principalBean.cedula)}"
+				value="Matricula en Linea">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+
+    <ui:define name="consultaNotas" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.consultaNotas(principalBean.cedula)}"
+				value="Consultar Notas">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+    
+    <ui:define name="horario" >
+       <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.horario(principalBean.cedula)}"
+				value="Consultar Horario">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+    
+    <ui:define name="cerrarSesion" >
+     	<br></br>
+        <h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{iniciarSesionBean.cerrarSesion()}" value="Cerrar sesión">
+
+			</p:commandButton>
+
+		</h:form>
+       
+    </ui:define>
+    
+    
+    
+    <ui:define name="content">
+    <br/>
+    <h:form class="search-bar">
+       
+        
+      </h:form>
+      <br></br>
+    	<h:form>
+	        
+		</h:form>
+
+    </ui:define>
+ 
+</ui:composition>
+</html>

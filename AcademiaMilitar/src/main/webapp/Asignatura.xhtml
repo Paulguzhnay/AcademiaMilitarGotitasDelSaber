@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+       <h:head>
+      	<f:metadata>
+		<f:viewParam name="id" value="#{asignaturaBean.id}"></f:viewParam>
+	</f:metadata>     
+      </h:head>
+ 
+      <body></body>
+      
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title">
+        Crear Materia
+    </ui:define>
+    
+    <ui:define name="reporteEconomico" >
+       
+        
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaReporte()}"
+				value="Consultar Libro Diario">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+    
+    <ui:define name="agregarMateria" >
+       
+         <br></br>
+		<h:form>
+        <p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaMateria()}"
+				value="Agregar Materia">
+
+			</p:commandButton>
+			</h:form>
+    </ui:define>
+    
+    <ui:define name="agregarOferta" >
+        
+        
+          <br></br>
+		<h:form>
+        <p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaOferta()}"
+				value="Nueva Oferta Academica">
+
+			</p:commandButton>
+			</h:form>
+    </ui:define>
+    
+        <ui:define name="cerrarSesion" >
+     
+        <br></br>
+        <h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{iniciarSesionBean.cerrarSesion()}" value="Cerrar sesión">
+
+			</p:commandButton>
+
+		</h:form> 
+       
+    </ui:define>
+ 
+    <ui:define name="content"> 
+				<p:messages autoUpdate="true" showDetail="true"/>
+				<div class="row fill_height">
+					<div class="col fill_height">
+						<h:form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+									<br></br>
+							<div class="counter_form_title">Registro de Asignaturas</div>
+						
+							<!--MATERIA-->
+							<!--NOMBRE MATERIA -->
+							<h3> Nombre de la Materia</h3>
+							<h:selectOneMenu value="#{asignaturaBean.materia.nombre}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+							  	<f:selectItems  value="#{asignaturaBean.listMalla}" var="materia" itemValue="#{materia.asignatura}" 
+							  	itemLabel="#{materia.asignatura}"/>                   
+							</h:selectOneMenu>
+							
+							<h3> Nivel de la Materia</h3>
+							<h:selectOneMenu value="#{asignaturaBean.materia.nivel}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="1" itemLabel="1" />
+								<f:selectItem itemValue="2" itemLabel="2" />
+								<f:selectItem itemValue="3" itemLabel="3" />
+							   	<f:selectItem itemValue="4" itemLabel="4" />
+								<f:selectItem itemValue="5" itemLabel="5" />
+								<f:selectItem itemValue="6" itemLabel="6" />
+							   	<f:selectItem itemValue="7" itemLabel="7" />
+								<f:selectItem itemValue="8" itemLabel="8" />
+								<f:selectItem itemValue="9" itemLabel="9" />
+								<f:selectItem itemValue="10" itemLabel="10" />           
+							</h:selectOneMenu>
+
+								<h3> Oferta Academica</h3>
+							<h:selectOneMenu value="#{asignaturaBean.materia.ofertaAcademica.id}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+           						<f:selectItems  value="#{asignaturaBean.listOferta}" var="materia" itemValue="#{materia.id}" 
+							  	itemLabel="#{materia.nombreCarrera}"/> 
+							</h:selectOneMenu>						
+
+							<br></br>
+							<!--ESPACIO FISICO-->
+							<!--NOMBRE EDIFICIO -->
+							<div class="counter_form_title">Registro de Edificio</div>
+							<h3> Nombre del Edificio</h3>
+							<h:selectOneMenu value="#{asignaturaBean.espF.nombreEdificio}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono edificio" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="Edificio Militar" itemLabel="Edificio Militar" />
+								<f:selectItem itemValue="Edificio Gotitas" itemLabel="Edificio Gotitas" />
+								<f:selectItem itemValue="Edificio del Saber" itemLabel="Edificio del Saber" />
+							   	<f:selectItem itemValue="Edificio de la Academia" itemLabel="Edificio de la Academia" />
+								<f:selectItem itemValue="Edificio Central" itemLabel="Edificio Central" />
+							</h:selectOneMenu>
+							
+							
+							
+							<!--NUMERO DE AULA -->
+							<h3>Numero del Aula</h3>	
+							<h:selectOneMenu value="#{asignaturaBean.espF.numeroAula}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">						
+							   	<f:selectItem itemValue="No selecciono numero de Aula" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="1" itemLabel="1" />
+								<f:selectItem itemValue="2" itemLabel="2" />
+								<f:selectItem itemValue="3" itemLabel="3" />
+							   	<f:selectItem itemValue="4" itemLabel="4" />
+								<f:selectItem itemValue="5" itemLabel="5" />
+								<f:selectItem itemValue="6" itemLabel="6" />
+							   	<f:selectItem itemValue="7" itemLabel="7" />
+								<f:selectItem itemValue="8" itemLabel="8" />
+								<f:selectItem itemValue="9" itemLabel="9" />
+								<f:selectItem itemValue="10" itemLabel="10" />  		
+								<f:selectItem itemValue="11" itemLabel="11" />
+								<f:selectItem itemValue="12" itemLabel="12" />
+								<f:selectItem itemValue="13" itemLabel="13" />
+							   	<f:selectItem itemValue="14" itemLabel="14" />
+								<f:selectItem itemValue="15" itemLabel="15" />
+								<f:selectItem itemValue="16" itemLabel="16" />
+							   	<f:selectItem itemValue="17" itemLabel="17" />
+								<f:selectItem itemValue="18" itemLabel="18" />
+								<f:selectItem itemValue="19" itemLabel="19" />
+								<f:selectItem itemValue="20" itemLabel="20" /> 					
+							</h:selectOneMenu>
+							<br></br>
+							<!--HORARIO-->
+							<!--DIA DE CLASES -->
+							<div class="counter_form_title">Registro de Horario</div>
+							<h3> Dia</h3>
+							<h:selectOneMenu value="#{asignaturaBean.horario.dia}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono dia" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="Lunes" itemLabel="Lunes" />
+								<f:selectItem itemValue="Martes" itemLabel="Martes" />
+								<f:selectItem itemValue="Miercoles" itemLabel="Miercoles" />
+							   	<f:selectItem itemValue="Jueves" itemLabel="Jueves" />
+								<f:selectItem itemValue="Viernes" itemLabel="Viernes" />
+							</h:selectOneMenu>
+							<!--HORA DE CLASES-->
+							<h3>Hora</h3>							
+							<h:selectOneMenu value="#{asignaturaBean.horario.hora}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono hora" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="07:00-09:00" itemLabel="07:00-09:00" />
+								<f:selectItem itemValue="09:00-11:00" itemLabel="09:00-11:00" />
+								<f:selectItem itemValue="11:00-13:00" itemLabel="11:00-13:00" />
+							   	<f:selectItem itemValue="13:00-15:00" itemLabel="13:00-15:00" />
+								<f:selectItem itemValue="15:00-17:00" itemLabel="15:00-17:00" />
+							</h:selectOneMenu>
+
+
+
+                <h:dataTable var="doce"  class="table align-items-center table-flush table-borderless" 
+                	 value="#{asignaturaBean.listDocente}" id="tblDocente" style="width:500px">
+						<h:column>
+							<f:facet name="header">Nombre</f:facet>
+							#{doce.persona.nombres}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Apellido</f:facet>
+							#{doce.persona.apellidos}
+						</h:column>
+					</h:dataTable>
+
+							<!--Docente-->
+							<!--NOMBRE Docente -->
+									<br></br>
+							<div class="counter_form_title">Registro del Docente</div>
+							<h3> Apellido del Docente</h3>
+							<h:selectOneMenu value="#{asignaturaBean.docente.id}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+							  	<f:selectItems  value="#{asignaturaBean.listDocente}" var="docente" itemValue="#{docente.id}" 
+							  	 itemLabel="#{docente.persona.apellidos}" />  
+							  	  
+							</h:selectOneMenu>
+
+							<!--Grupo-->
+							<!--NUmero del Grupo -->
+							<br></br>
+							<div class="counter_form_title">Registro del Grupo</div>
+							<h3> Numero del Grupo</h3>
+							<h:selectOneMenu value="#{asignaturaBean.grupo.numeroGrupo}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="1" itemLabel="1" />
+								<f:selectItem itemValue="2" itemLabel="2" />
+								<f:selectItem itemValue="3" itemLabel="3" />
+							   	<f:selectItem itemValue="4" itemLabel="4" />
+								<f:selectItem itemValue="5" itemLabel="5" />
+							  	                     
+							</h:selectOneMenu>
+							<h3> Nivel del Grupo</h3>
+							<h:selectOneMenu value="#{asignaturaBean.grupo.nivel}" style="width: 500px;height: 35px; padding-left: 15px; 
+							border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(192,192,192,0.3); color:white ">
+							   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+							   	<f:selectItem itemValue="1" itemLabel="1" />
+								<f:selectItem itemValue="2" itemLabel="2" />
+								<f:selectItem itemValue="3" itemLabel="3" />
+							   	<f:selectItem itemValue="4" itemLabel="4" />
+								<f:selectItem itemValue="5" itemLabel="5" />
+								<f:selectItem itemValue="6" itemLabel="6" />
+							   	<f:selectItem itemValue="7" itemLabel="7" />
+								<f:selectItem itemValue="8" itemLabel="8" />
+								<f:selectItem itemValue="9" itemLabel="9" />
+								<f:selectItem itemValue="10" itemLabel="10" />
+
+							</h:selectOneMenu>
+
+
+	
+							<!-- BOTON -->
+							<h:commandButton action="#{asignaturaBean.guardarMateria()}"
+							value="Guardar" style="width: 500px;" 
+							class="counter_form_button"/>
+
+							<br></br>
+
+
+						</h:form>
+					</div>
+				</div> 
+ 
+
+    </ui:define>		
+</ui:composition>		
+</html>

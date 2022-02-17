@@ -99,7 +99,12 @@
     </dependencyManagement>
 	
     <dependencies>
-
+		<dependency>
+    <groupId>org.primefaces</groupId>
+    <artifactId>primefaces</artifactId>
+    <version>7.0</version>
+</dependency>
+		
         <!-- Import the CDI API, we use provided scope as the API is included in WildFly / JBoss EAP -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
@@ -150,6 +155,13 @@
             <artifactId>jboss-servlet-api_4.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>1.4.5</version>
+		</dependency>
 
         <!-- Import the EJB API, we use provided scope as the API is included in WildFly / JBoss EAP -->
         <dependency>

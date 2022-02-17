@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+       <h:head>
+   	<f:metadata>
+		<f:viewParam name="id" value="#{horarioBean.cedula}"></f:viewParam>
+	    <f:viewAction action="#{horarioBean.guardarCedula()}" />		
+		
+	</f:metadata>     
+       
+      </h:head>
+ 
+      <body></body>
+      
+<ui:composition template="plantilla3.xhtml">
+    <ui:define name="title">
+        Calificaciones
+    </ui:define>
+
+    <ui:define name="inicio" >
+        
+        
+        	<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaInicio(horarioBean.cedula)}"
+				value="Inicio">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+
+    <ui:define name="direccion" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.editarDatos(horarioBean.cedula)}"
+				value="Datos Personales">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+    
+      <ui:define name="estadoCuenta" >
+       <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaCuentas(horarioBean.cedula)}"
+				value="Estado de Cuenta">
+
+			</p:commandButton>
+
+		</h:form>
+    </ui:define>
+    
+    <ui:define name="matricula" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaMatricula(horarioBean.cedula)}"
+				value="Matricula en Linea">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+
+    <ui:define name="consultaNotas" >
+        <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.consultaNotas(horarioBean.cedula)}"
+				value="Consultar Notas">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+    
+    <ui:define name="horario" >
+       <br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.horario(horarioBean.cedula)}"
+				value="Consultar Horario">
+
+			</p:commandButton>
+
+		</h:form>
+        
+       
+    </ui:define>
+    
+    <ui:define name="cerrarSesion" >
+     <br></br>
+        <h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{iniciarSesionBean.cerrarSesion()}" value="Cerrar sesión">
+
+			</p:commandButton>
+
+		</h:form>
+       
+    </ui:define>
+
+
+    <ui:define name="content"> 
+                <div class="card-body" var="cal">
+						<h:form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+
+
+							<br />
+							<!-- BOTON -->
+							<h:commandButton action="#{horarioBean.buscarHorario()}" value="Buscar" class="counter_form_button"/>
+
+						</h:form>
+					</div>
+
+    
+    
+                    <div class="card-body">
+                    <h:form>
+                <h:dataTable var="mat"  class="table align-items-center table-flush table-borderless"  value="#{horarioBean.gruposMatriuculados}">
+						<h:column>
+							<f:facet name="header">HORA</f:facet>
+							#{mat.horario.hora}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">DIA</f:facet>
+							#{mat.horario.dia}
+						</h:column>
+						<h:column>
+							<f:facet name="header">MATERIA</f:facet>
+							#{mat.materia.nombre}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nombre de la Asignatura      </f:facet>
+							#{mat.materia.nombre}
+						</h:column>
+
+
+
+
+					</h:dataTable>
+			</h:form>
+					</div>
+    
+    
+
+    </ui:define>		
+
+
+</ui:composition>		
+</html>

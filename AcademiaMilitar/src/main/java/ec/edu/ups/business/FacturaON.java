@@ -8,7 +8,7 @@ import ec.edu.ups.dao.FacturaDAO;
 import ec.edu.ups.model.*;
 
 @Stateless
-public class FacturaON implements FacturaONRemote{
+public class FacturaON implements FacturaONRemote, FacturaONLocal{
 
 	
 	
@@ -23,5 +23,16 @@ public class FacturaON implements FacturaONRemote{
 		return daoFactura.getList();
 	}
 	
+	public void actualizar(Factura f) {
+		daoFactura.update(f);
+	}
+	
+	public Factura buscar(int id) {
+		return daoFactura.read(id);
+	}
+	
+	public List <Factura> getFacturasFecha(String fecha){
+		return daoFactura.getFacturasFecha(fecha);
+	}
 	
 }

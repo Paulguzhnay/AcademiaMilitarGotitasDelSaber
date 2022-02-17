@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<f:metadata>
+		<f:viewAction action="#{estudianteCuentasBean.loadFacturas()}" />
+		<f:viewParam var="pri" name="id"
+			value="#{estudianteCuentasBean.cedula}"></f:viewParam>
+	</f:metadata>
+</h:head>
+
+
+<ui:composition template="plantilla3.xhtml">
+	<ui:define name="title">
+        Listado de Cuentas
+    </ui:define>
+
+	<ui:define name="matricula">
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaMatricula(estudianteCuentasBean.cedula)}"
+				value="Matricula en Linea">
+
+			</p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+	<ui:define name="cabezera">
+        Estado de Cuenta
+    </ui:define>
+
+	<ui:define name="inicio">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaInicio(estudianteCuentasBean.cedula)}"
+				value="Inicio">
+
+			</p:commandButton>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="consultaNotas">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.consultaNotas(estudianteCuentasBean.cedula)}"
+				value="Consultar Notas">
+
+			</p:commandButton>
+
+		</h:form>
+
+
+	</ui:define>
+
+	<ui:define name="horario">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.horario(estudianteCuentasBean.cedula)}"
+				value="Consultar Horario">
+
+			</p:commandButton>
+
+		</h:form>
+
+
+	</ui:define>
+	<ui:define name="cerrarSesion">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{iniciarSesionBean.cerrarSesion()}" value="Cerrar sesión">
+
+			</p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="direccion">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.editarDatos(estudianteCuentasBean.cedula)}"
+				value="Datos Personales">
+
+			</p:commandButton>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="estadoCuenta">
+
+		<br></br>
+		<h:form>
+			<p:commandButton style="margin-left:10px"
+				action="#{principalBean.ventanaCuentas(estudianteCuentasBean.cedula)}"
+				value="Estado de Cuenta">
+
+			</p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<h:form class="search-bar">
+			<!--   <h:inputText disabled="true" id="buscartxt"  type="hidden" class="form-control" p:placeholder="Ej. YY-MM-DD">
+        
+        	
+        
+        </h:inputText>-->
+
+			<p:commandButton value="Facturas Canceladas"
+				update="form:cuentasTable"
+				action="#{estudianteCuentasBean.loadFacturasPagadas()}"
+				style=" width:200px;  margin-left: 10px; font-weight: bold;"
+				immediate="true">
+				<!--  
+        	<f:ajax render="cuentasTable" listener="#{estudianteCuentasBean.loadFacturasPagadas()}">
+        	</f:ajax>
+        -->
+			</p:commandButton>
+
+			<p:commandButton value="Facturas Pendientes"
+				update="form:cuentasTable"
+				action="#{estudianteCuentasBean.loadFacturasPendientes()}"
+				style=" width:200px; margin-left: 10px; font-weight: bold; "
+				immediate="true">
+				<!-- 
+        	<f:ajax render="cuentasTable" listener="#{estudianteCuentasBean.loadFacturasPendientes()}">
+        	</f:ajax>
+         -->
+			</p:commandButton>
+		</h:form>
+		<br></br>
+		<h:form id="form">
+
+			<h:dataTable id="cuentasTable" var="fac"
+				class="table align-items-center table-flush table-borderless"
+				value="#{estudianteCuentasBean.facturas}">
+
+				<h:column>
+					<f:facet name="header">#Fac</f:facet>
+					#{fac.factura.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Fecha</f:facet>
+					#{fac.factura.fecha}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descripcion</f:facet>
+					#{fac.factura.detalle}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Total</f:facet>
+					#{fac.factura.total}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Estado</f:facet>
+					#{fac.factura.estado}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<p:commandButton value="Pagar"
+						rendered="#{estudianteCuentasBean.facturasPendientes}"
+						action="#{estudianteCuentasBean.factura(fac.factura.total,fac.factura.id)}"
+						immediate="true" />
+					<p:commandButton value="Ver"
+						rendered="#{estudianteCuentasBean.facturasPagadas}"
+						update="form:deta"
+						action="#{estudianteCuentasBean.loadDetalle(fac.factura.id)}"
+						onclick="PF('wdialog').show();" immediate="true">
+
+					</p:commandButton>
+				</h:column>
+
+
+			</h:dataTable>
+
+			<p:dialog id="dialogDet" widgetVar="wdialog"
+				header="Detalle de la Factura" modal="true" appendTo="@(body)">
+				<p>Detalle de la Factura Nro.</p>
+				<h:dataTable id="deta"
+					style="color: black; border: 1px solid #000b;" var="facd"
+					class="table align-items-center table-flush table-borderless"
+					value="#{estudianteCuentasBean.facDetalle}">
+
+					<h:column style="border: 1px solid #000b; background-color: coral;">
+						<f:facet style="border: 1px solid #000b; background-color: coral;"
+							name="header">Descripcion</f:facet>
+					#{facd.id}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Descripcion</f:facet>
+					#{facd.detalle}
+				</h:column>
+					<h:column>
+						<f:facet name="header">SubTotal</f:facet>
+					#{facd.subtotal}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Descuento</f:facet>
+					#{facd.descuento}
+				</h:column>
+					<h:column>
+						<f:facet name="header">IVA</f:facet>
+					#{facd.iva}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Total</f:facet>
+					#{facd.total}
+				</h:column>
+
+
+
+				</h:dataTable>
+			</p:dialog>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

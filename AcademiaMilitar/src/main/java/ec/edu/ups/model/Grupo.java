@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TBL_Grupo")
@@ -29,30 +31,37 @@ public class Grupo implements Serializable{
 	@Column(name = "gru_nivel")
     private int nivel;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "doc_id")
     private Docente docente;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "mate_id")
     private Materia materia;
-    
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mat_id")
-    private List<Matricula> matriculas;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "esp_id")
-    private List<EspacioFisico> espaciosFisicos;
-	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "hor_id")
-    private List<Horario> horarios;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cal_id")
-    private List<Calificacion> calificaciones;
-	
-    public void setId(int id) {
+    private Horario horario;
+    
+	@Transient
+	private boolean seleccionado;
+
+    public boolean isSeleccionado() {
+		return seleccionado;
+	}
+
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
+	}
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     
@@ -92,64 +101,13 @@ public class Grupo implements Serializable{
         this.materia = materia;
     }
 
-	public List<Matricula> getMatriculas() {
-		return matriculas;
+	@Override
+	public String toString() {
+		return "Grupo [id=" + id + ", numeroGrupo=" + numeroGrupo + ", nivel=" + nivel + ", docente=" + docente
+				+ ", materia=" + materia + ", horario=" + horario + ", seleccionado=" + seleccionado + "]";
 	}
 
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
-	}
 
-	public List<EspacioFisico> getEspaciosFisicos() {
-		return espaciosFisicos;
-	}
-
-	public void setEspaciosFisicos(List<EspacioFisico> espaciosFisicos) {
-		this.espaciosFisicos = espaciosFisicos;
-	}
-
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-
-	public List<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-
-	public void setCalificaciones(List<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
-    
-	public void addMatricula(Matricula mat) {
-		if(matriculas == null)
-			matriculas = new ArrayList<Matricula>();
-			
-		matriculas.add(mat);		
-	}
 	
-	public void addCalificaciones(Calificacion cal) {
-		if(calificaciones == null)
-			calificaciones = new ArrayList<Calificacion>();
-			
-		calificaciones.add(cal);		
-	}
-	
-	public void addEspacioFisico(EspacioFisico esp) {
-		if(espaciosFisicos == null)
-			espaciosFisicos = new ArrayList<EspacioFisico>();
-			
-		espaciosFisicos.add(esp);		
-	}
-	
-	public void addHorario(Horario hor) {
-		if(horarios == null)
-			horarios = new ArrayList<Horario>();
-			
-		horarios.add(hor);		
-	}
 	
 }

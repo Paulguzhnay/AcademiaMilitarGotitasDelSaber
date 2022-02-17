@@ -24,4 +24,15 @@ public class MatriculaON implements MatriculaONRemote, MatriculaONLocal {
 		return daoMatricula.getList();
 	}
 	
+public List<Matricula> getMatFact(int idEst){
+		
+		
+		return daoMatricula.getMatFacturas(idEst);
+	}
+
+public List<Matricula> getMatHorario(String idEst){
+	
+	
+	return daoMatricula.getMatHorario(idEst);
+}
 }

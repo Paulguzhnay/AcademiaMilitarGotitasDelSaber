@@ -17,7 +17,16 @@ public class IniciarSesionON implements IniciarSesionONLocal,IniciarSesionONRemo
 		daoSesion.insert(in);
 	}
 	
-	public List <IniciarSesion> getHorario(){
+	public List <IniciarSesion> getIniciarSesion(){
 		return daoSesion.getList();
+	}
+	
+	public void cambiarContrasenia(IniciarSesion i) {
+		if(daoSesion.read(i.getId())==null)	
+			System.out.println("No hay usuario");
+		else 
+			daoSesion.update(i);
+		
+		
 	}
 }

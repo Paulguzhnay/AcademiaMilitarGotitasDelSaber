@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:rich="http://richfaces.org/rich" > 
+      
+<ui:composition template="template7/plantillaInscribir.xhtml">
+    <ui:define name="title">
+        Inscripciones
+    </ui:define>
+    <ui:define name="content">
+    	<h5>(*) Son campos obligatorios</h5>  
+		<h:form id="datos">
+			<br />
+			<h:outputLabel value="CÃ©dula de Identidad *" style="float: rigth;color:white;"/><br />
+			<h:inputText id="cedula" required="true" requiredMessage="*Campo Obligatorio" validator = "validarCedula" value="#{inscripcionBean.inscripcion.persona.cedula}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white">
+				<f:validator validatorId="cedulaIncorrecta2" />
+			</h:inputText>
+			<h:message for="cedula" id="errorC" style="color: red" />
+			<br />
+			<h:outputLabel value="Nombres Completos *" style="color: white" /><br />
+			<h:inputText id="nombres" value="#{inscripcionBean.inscripcion.persona.nombres}" required="true" requiredMessage="*Campo Obligatorio" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white"/>
+			<h:message for="nombres" id="errorN" style="color: red" />
+			<br />
+			<h:outputLabel value="Apellidos Completos *" style="color: white"/><br />
+			<h:inputText id="apellidos" value="#{inscripcionBean.inscripcion.persona.apellidos}" required="true" requiredMessage="*Campo Obligatorio" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white"/>
+			<h:message for="apellidos" id="errorA" style="color: red" />
+			<br />
+			<h:outputLabel value="Correo Personal *" style="color: white"/><br />
+			<h:inputText id="correo" value="#{inscripcionBean.inscripcion.persona.correoPersonal}" required="true" requiredMessage="*Campo Obligatorio" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white">
+				<f:validator validatorId="correoIncorrecto" />
+			</h:inputText>
+			<h:message for="correo" id="errorCo" style="color: red" />
+			<br />            
+			<h:outputLabel value="Genero *" style="color: white"/><br />
+			<h:selectOneMenu value="#{inscripcionBean.inscripcion.persona.genero}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white">
+			   <f:selectItem itemValue="No selecciono genero" itemLabel="Seleccione" />
+			   <f:selectItem itemValue="Hombre" itemLabel="Hombre" />
+			   <f:selectItem itemValue="Mujer" itemLabel="Mujer" />                   
+			</h:selectOneMenu>
+			<br />
+			<h:outputLabel value="Direccion *" style="color: white"/><br />
+			<h:inputText id="direccion" value="#{inscripcionBean.inscripcion.persona.direccion}" required="true" requiredMessage="*Campo Obligatorio" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white"/>
+			<h:message for="direccion" id="errorD" style="color: red" />
+			<br />
+			<h:outputLabel value="Celular *" style="color: white"/><br />
+			<h:inputText id="celular" value="#{inscripcionBean.inscripcion.persona.celular}" required="true" requiredMessage="*Campo Obligatorio" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white"/>
+			<h:message for="celular" id="errorCe" style="color: red" />
+			<br />
+			<h:outputLabel value="Periodo Lectivo *" style="color: white"/><br />
+			<h:selectOneMenu value="#{inscripcionBean.inscripcion.periodoLectivo}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color:white ">
+			   	<f:selectItem itemValue="No selecciono perido" itemLabel="Seleccione"/>
+			   	<f:selectItem itemValue="59" itemLabel="59"/>                  
+			</h:selectOneMenu>
+			<br />
+			<h:outputLabel value="Oferta AcÃ¡demica *" style="color: white"/><br />
+			<h:selectOneMenu value="#{inscripcionBean.inscripcion.carrera}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color:white ">
+			   	<f:selectItem itemValue="No selecciono carrera" itemLabel="Seleccione"/>
+			  	<f:selectItems value="#{ofertaBean.ofertas}" var="oferta" itemValue="#{oferta.nombreCarrera}" itemLabel="#{oferta.nombreCarrera}"/>                   
+			</h:selectOneMenu>
+			<br />
+			<h:outputLabel value="Modalidad *" style="color: white"/><br />
+			<h:selectOneMenu value="#{inscripcionBean.inscripcion.modalidad}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color:white ">
+			   <f:selectItem itemValue="No selecciono modalidad" itemLabel="Seleccione"/>
+			   <f:selectItem itemValue="Presencial" itemLabel="Presencial"/>                   
+			</h:selectOneMenu>
+			<br />
+			<h:outputLabel value="Jornada *" style="color: white"/><br />
+			<h:selectOneMenu value="#{inscripcionBean.inscripcion.jornada}" style="width: 100%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: white">
+			   <f:selectItem itemValue="No selecciono jornada" itemLabel="Seleccione"/>
+			   <f:selectItem itemValue="Matutina" itemLabel="Matutina"/>
+			   <f:selectItem itemValue="Nocturna" itemLabel="Nocturna"/>                 
+			</h:selectOneMenu> 
+			<br />			
+			<br />
+			<h:commandButton action="#{inscripcionBean.guardar()}" value="Inscribirse" style="float: left; width: 100%; height: 35px; border: none; border-radius: 20px; margin-top: -8px;color: rgba(255,255,255, 1); background-color: rgba(16,89,255, 1);"/>			
+		</h:form>
+   </ui:define>
+ 
+</ui:composition>
+</html>
+

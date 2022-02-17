@@ -11,5 +11,6 @@ public interface EstudianteONLocal {
 	public void insertar(Estudiante est) throws Exception;
 	
 	public List <Estudiante> getEstudiante();
+	public List <Estudiante> getEstudianteCuenta(String cedula);
 	
 }

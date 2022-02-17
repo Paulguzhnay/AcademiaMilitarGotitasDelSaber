@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TBL_Materia")
@@ -29,17 +31,15 @@ public class Materia implements Serializable{
 	@Column(name = "mate_nivel")
     private int nivel;
 	
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-    private Matricula matricula;
+	@ManyToOne
+	@JoinColumn(name = "ofe_id")
+    private OfertaAcademica ofertaAcademica=new OfertaAcademica();
 	
-	@OneToOne
-	@JoinColumn(name = "doc_id")
-    private Docente docente;
+	@Transient
+	private boolean seleccionado;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "gru_id")
-    private List<Grupo> grupos;
+	@Transient
+	private List<Grupo>grupos=new ArrayList<Grupo>();
 
     public void setId(int id) {
 		this.id = id;
@@ -57,13 +57,7 @@ public class Materia implements Serializable{
         this.nombre = nombre;
     }
 
-    public Docente getDocente() {
-        return docente;
-    }
-
-    public void setDocente(Docente docente) {
-        this.docente = docente;
-    }
+    
 
     public int getNivel() {
         return nivel;
@@ -73,13 +67,14 @@ public class Materia implements Serializable{
         this.nivel = nivel;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
-    }
+	public boolean isSeleccionado() {
+		return seleccionado;
+	}
 
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
-    }
+	public void setSeleccionado(boolean seleccionado) {
+		this.seleccionado = seleccionado;
+	}
+	
 
 	public List<Grupo> getGrupos() {
 		return grupos;
@@ -88,12 +83,23 @@ public class Materia implements Serializable{
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
 	}
+
 	
-	public void addGrupo(Grupo gru) {
-		if(grupos == null)
-			grupos = new ArrayList<Grupo>();
-			
-		grupos.add(gru);		
+	
+	
+	
+	public OfertaAcademica getOfertaAcademica() {
+		return ofertaAcademica;
+	}
+
+	public void setOfertaAcademica(OfertaAcademica ofertaAcademica) {
+		this.ofertaAcademica = ofertaAcademica;
+	}
+
+	@Override
+	public String toString() {
+		return "Materia [id=" + id + ", nombre=" + nombre + ", nivel=" + nivel + ", ofertaAcademica=" + ofertaAcademica
+				+ ", seleccionado=" + seleccionado + "]";
 	}
     
 }

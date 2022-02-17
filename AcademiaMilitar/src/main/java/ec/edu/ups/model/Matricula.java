@@ -7,10 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -19,27 +21,54 @@ import javax.persistence.Table;
 @Table(name = "TBL_Matricula")
 public class Matricula implements Serializable {
     
+	@Override
+	public String toString() {
+		return "Matricula [id=" + id + ", nivel=" + nivel + ", estudiante=" + estudiante + ", ofertaAcademica="
+				+ ofertaAcademica + ", factura=" + factura + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mat_id")
+	@Column(name = "matri_id")
 	private int id;
 	
-	@OneToOne
-	@JoinColumn(name = "gru_id")
-	private Grupo grupo;
-	@OneToOne
+	@Column(name = "matri_nivel")
+	private int nivel;
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "est_id")
     private Estudiante estudiante;
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(name = "ofe_id")
     private OfertaAcademica ofertaAcademica;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mate_id")
-    private List<Materia> materias;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fact_id")
+    private Factura factura;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name = "matricula_id")
+	private List<MatriculaMaterias> matMaterias;
 
-    public void setId(int id) {
+    public List<MatriculaMaterias> getMatMaterias() {
+		return matMaterias;
+	}
+
+	public void setMatMaterias(List<MatriculaMaterias> matMaterias) {
+		this.matMaterias = matMaterias;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     
@@ -47,14 +76,15 @@ public class Matricula implements Serializable {
 		return id;
 	}
     
-    public Grupo getGrupo() {
-        return grupo;
-    }
+    public int getNivel() {
+		return nivel;
+	}
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
-
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+    
+   
     public Estudiante getEstudiante() {
         return estudiante;
     }
@@ -71,19 +101,6 @@ public class Matricula implements Serializable {
         this.ofertaAcademica = ofertaAcademica;
     }
 
-	public List<Materia> getMaterias() {
-		return materias;
-	}
-
-	public void setMaterias(List<Materia> materias) {
-		this.materias = materias;
-	}
 	
-	public void addMateria(Materia mat) {
-		if(materias == null)
-			materias = new ArrayList<Materia>();
-			
-		materias.add(mat);		
-	}
         
 }

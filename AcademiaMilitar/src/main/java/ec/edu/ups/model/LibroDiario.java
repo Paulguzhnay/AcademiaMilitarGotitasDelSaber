@@ -3,6 +3,7 @@ package ec.edu.ups.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,6 @@ public class LibroDiario implements Serializable {
 	@Column(name = "lib_valorTotal")
     private double valorTotal;
 	
-	@OneToOne
-	@JoinColumn(name = "fac_id")
-    private Factura factura;
 
     public Date getFecha() {
         return fecha;
@@ -54,12 +52,11 @@ public class LibroDiario implements Serializable {
         this.valorTotal = valorTotal;
     }
 
-    public Factura getFactura() {
-        return factura;
-    }
+	@Override
+	public String toString() {
+		return "LibroDiario [id=" + id + ", fecha=" + fecha + ", valorTotal=" + valorTotal + "]";
+	}
 
-    public void setFactura(Factura factura) {
-        this.factura = factura;
-    }
+    
     
 }

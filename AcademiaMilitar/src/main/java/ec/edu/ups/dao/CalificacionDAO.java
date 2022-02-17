@@ -45,5 +45,18 @@ public class CalificacionDAO {
 		return listado;
 		
 	}
+	public List<Calificacion> getListB(int idNivel, String idEst){
+		
+		List<Calificacion> listado= new ArrayList<Calificacion>();
+		
+		String jpql ="SELECT ca FROM Calificacion ca  WHERE ca.materia.nivel=?1 AND ca.estudiante.persona.cedula =?2  ";
+		Query query=em.createQuery(jpql, Calificacion.class);
+		query.setParameter(1, idNivel);
+		query.setParameter(2, idEst);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
 
 }

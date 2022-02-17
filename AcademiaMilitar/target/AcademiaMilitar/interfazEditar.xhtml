@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{principalBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{principalBean.loadData()}" />
+	</f:metadata>
+
+</h:head>
+
+<ui:composition template="/plantilla3.xhtml">
+	<ui:define name="title">
+        Actualizar Datos
+    </ui:define>
+    <ui:define name="title">
+        Actualizar Datos
+    </ui:define>
+	<ui:define name="content">
+
+		<div class="card-body">
+			<h4 class="card-title">Actualizar Datos Estudiante</h4>
+
+			<h:form class="forms-sample">
+				<div class="form-group">
+					<label for="txtCedula">Cédula</label>
+
+					<h:inputText class="form-control" id="txtCedula"
+						value="#{principalBean.persona.cedula}" placeholder="Name" disabled="true">
+						<f:ajax execute="txtCedula" render="txtNombres txtApellido txtDireccions txtTelefono"
+							listener="#{principalBean.loadDataEditar()}" />
+					</h:inputText>
+				</div>
+				<div class="form-group">
+					<label for="txtNombres">Nombres</label>
+					<h:inputText class="form-control" id="txtNombres"
+						value="#{principalBean.persona.nombres}" />
+				</div>
+				<div class="form-group">
+					<label for="txtApellido">Apellidos</label>
+					<h:inputText class="form-control" id="txtApellido"
+						value="#{principalBean.persona.apellidos}" />
+				</div>
+				<div class="form-group">
+					<label for="txtDireccions">Direccion</label>
+					<h:inputText value="#{principalBean.persona.direccion}"
+						class="form-control" id="txtDireccions" />
+				</div>
+				<div class="form-group">
+					<label for="txtTelefono">Telefono</label>
+					<h:inputText value="#{principalBean.persona.celular}"
+						class="form-control" id="txtTelefono" />
+				</div>
+				
+
+
+				<h:commandButton action="#{principalBean.actualizar()}" value="Guardar"
+					class="btn btn-primary mr-2" />
+
+				<!-- <h:commandButton action="#{clientesBean.guardar2()}"
+					value="Guardar2" class="btn btn-primary mr-2"> 
+
+					<f:ajax execute="txtNombre" render="txtNombre" />
+
+				</h:commandButton> -->
+
+				<button class="btn btn-light">Cancel</button>
+			</h:form>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>
+
+

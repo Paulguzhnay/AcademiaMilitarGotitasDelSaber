@@ -9,7 +9,7 @@ import ec.edu.ups.model.*;
 import ec.edu.ups.dao.*;
 
 @Stateless
-public class CalificacionON  implements CalificacionONRemote{
+public class CalificacionON  implements CalificacionONRemote, CalificacionONLocal{
 
 
 	
@@ -24,5 +24,7 @@ public class CalificacionON  implements CalificacionONRemote{
 		return daoCalificacion.getList();
 	}
 	
-
+	public List <Calificacion> getCalificacionB(int nivel, String idEst){
+		return daoCalificacion.getListB(nivel,idEst);
+	}
 }

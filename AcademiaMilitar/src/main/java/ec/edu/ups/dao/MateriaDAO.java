@@ -45,5 +45,21 @@ public class MateriaDAO {
 		return listado;
 		
 	}
+	
+public List<Materia> getListMaterias(int nivel, int ofeID){
+		
+		System.out.println(nivel);
+		List<Materia> listado= new ArrayList<Materia>();
+		
+		String jpql ="SELECT mat FROM Materia mat WHERE mat.nivel= ?1 AND mat.ofertaAcademica.id= ?2";
+		
+		Query query=em.createQuery(jpql, Materia.class);
+		query.setParameter(1, nivel);
+		query.setParameter(2, ofeID );
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
 
 }

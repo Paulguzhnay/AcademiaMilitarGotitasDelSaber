@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+    	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<f:metadata>
+		<f:viewParam name="carrera" value="#{matriculaBean.carreraElegida}"></f:viewParam>
+		<f:viewParam name="nivel" value="#{matriculaBean.nivelElegido}"></f:viewParam>
+		<f:viewAction action="#{matriculaBean.loadMaterias()}" />
+	</f:metadata>
+</h:head>
+
+<ui:composition template="template/contacto.xhtml">
+	<ui:define name="title">
+        Datos Matricula
+    </ui:define>
+	<ui:define name="content">
+
+		
+		<h:form>
+		<div class="wrap-table100">
+				<div class="table100">
+					<h:dataTable var="mate" class="table table-striped" value="#{matriculaBean.materias}" name="data">
+						
+				<h:column>
+					<f:facet name="header" class="table100-head">ID</f:facet>
+					#{mate.id}
+					<h:inputHidden value="#{mate.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"  class="table100-head">Nombre</f:facet>
+					#{mate.nombre}
+				</h:column>
+				<h:column>
+					<f:facet name="header"  class="table100-head">Nivel</f:facet>
+					#{mate.nivel}
+				</h:column>
+				<h:column >
+					<f:facet name="header"  class="table100-head">Estado</f:facet>
+					<h:selectBooleanCheckbox value="#{mate.seleccionado}" name="seleccionado" />
+				</h:column>
+			
+			
+			</h:dataTable>
+			<br />
+			<br />
+		
+				</div>
+			</div>
+		
+		<h:commandButton class="contact_send_btn trans_200"
+						id="contact_send_btn" action="#{matriculaBean.Materias()}"
+						value="Continuar" />
+		</h:form>
+		
+		
+	
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

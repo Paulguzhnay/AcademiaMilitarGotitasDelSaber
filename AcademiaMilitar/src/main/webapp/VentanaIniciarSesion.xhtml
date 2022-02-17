@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:composition template="template7/plantillaIniciarSesion.xhtml">
+    <ui:define name="title">
+        Inscripciones
+    </ui:define>
+    <ui:define name="content">
+    	<h5>(*) Son campos obligatorios</h5>  
+		<h:form >
+			<br />
+			<h:outputLabel value="Correo Institucional *" style="float: rigth;color:black;" /><br />
+			<h:inputText id="usuario" required="true" requiredMessage="*Campo Obligatorio" value="#{iniciarSesionBean.iniciarSesion.usuario}" style="width: 50%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: black"/>
+			<h:message for="usuario" id="errorUsu" style="color: red" />
+			<br />
+			<h:outputLabel value="Contraseña *" style="float: rigth;color:black;" /><br />
+			<h:inputSecret id="clave" required="true" requiredMessage="*Campo Obligatorio" value="#{iniciarSesionBean.iniciarSesion.contrasenia}" style="width: 50%;height: 35px; padding-left: 15px; border: none; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,.2); color: black" />				
+			<h:message for="clave" id="errorCla" style="color: red" />
+			<br /><br />
+			<h:commandButton action="#{iniciarSesionBean.iniciarSesion()}" value="Iniciar Sesión" class="btn btn-primary submit" style="float: none; width: 30%; height: 35px; border: none; border-radius: 20px; margin-top: -8px;color: rgba(255,255,255, 1); background-color: rgba(16,89,255, 1);"/>	
+					
+			
+		</h:form>
+		
+		<h:form>
+		<br />
+			<h:commandButton action="#{iniciarSesionBean.ventanaCambiar()}" value="Olvide Contraseña" style="float: none; width: 30%; height: 35px; border: none; border-radius: 20px; margin-top: -8px;color: rgba(255,255,255, 1); background-color: rgba(16,89,255, 1);"/>
+		</h:form>
+	
+   </ui:define>
+ 
+</ui:composition>
+</html>

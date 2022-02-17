@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<f:metadata>
+		<f:viewParam name="id" value="#{matriculaBean.cedula1}"></f:viewParam>
+		<f:viewAction action="#{matriculaBean.guardarCedula()}" />
+	</f:metadata>
+</h:head>
+
+<ui:composition template="template/contacto.xhtml">
+	<ui:define name="title">
+        Datos Matricula
+    </ui:define>
+	<ui:define name="content">
+
+		
+				<h:form name="data">
+					
+					<h:inputText class="input_field contact_form_name" name="data"
+						data-error="Nivel is required." id="Nivel"
+						a:placeholder="Ingrese el Nivel" value="#{matriculaBean.nivelElegido}" required="true" requiredMessage="Nivel es obligatorio">
+						
+						<f:validateLength for = "Nivel" minimum = "1" maximum = "2" />
+						</h:inputText>
+					<h:message  for = "Nivel" 
+					style = "color: #d8000c;
+  					background-color: #ffbaba;" >
+  					</h:message> 
+					<h:selectOneMenu id="form_carrera"
+						class="input_field contact_form_email" placeholder="Carrera"
+						required="required" value="#{matriculaBean.carreraElegida}">
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione La Carrera" />
+						<f:selectItems var="mat" value="#{matriculaBean.ofertas}"
+							itemValue="#{mat.id}" itemLabel="#{mat.nombreCarrera}" />
+					</h:selectOneMenu>
+
+					<h:selectOneMenu id="form_modalida"
+						class="input_field contact_form_email" placeholder="Modalidad"
+						required="required">
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione la Modalida" />
+						<f:selectItem itemValue="Presencial" itemLabel="Presencial" />
+
+					</h:selectOneMenu>
+
+					<h:commandButton class="contact_send_btn trans_200"
+						id="contact_send_btn" action="#{matriculaBean.Datos()}"
+						value="Continuar" />
+
+				</h:form>
+		
+	</ui:define>
+
+</ui:composition>
+</html>

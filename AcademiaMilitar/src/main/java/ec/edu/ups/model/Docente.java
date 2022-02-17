@@ -35,16 +35,21 @@ public class Docente implements Serializable {
 	@JoinColumn(name = "per_cedula")
     private Persona persona;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "gru_id")
-	private List<Grupo> grupos;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "log_id")
+    private IniciarSesion iniciarSesion;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mate_id")
-	private List<Materia> materia;
 	
 
-    public void setId(int id) {
+    public IniciarSesion getIniciarSesion() {
+		return iniciarSesion;
+	}
+
+	public void setIniciarSesion(IniciarSesion iniciarSesion) {
+		this.iniciarSesion = iniciarSesion;
+	}
+
+	public void setId(int id) {
 		this.id = id;
 	}
     
@@ -84,33 +89,11 @@ public class Docente implements Serializable {
         this.persona = persona;
     }
 
-	public List<Grupo> getGrupos() {
-		return grupos;
+	@Override
+	public String toString() {
+		return "Docente [id=" + id + ", titulo=" + titulo + ", gradoTiulo=" + gradoTiulo + ", especializacion="
+				+ especializacion + ", persona=" + persona + ", iniciarSesion=" + iniciarSesion + "]";
 	}
 
-	public void setGrupos(List<Grupo> grupos) {
-		this.grupos = grupos;
-	}
 
-	public List<Materia> getMateria() {
-		return materia;
-	}
-
-	public void setMateria(List<Materia> materia) {
-		this.materia = materia;
-	}
-    
-	public void addGrupo(Grupo gru) {
-		if(grupos == null)
-			grupos = new ArrayList<Grupo>();
-			
-		grupos.add(gru);		
-	}
-	
-	public void addMateria(Materia mat) {
-		if(materia == null)
-			materia = new ArrayList<Materia>();
-			
-		materia.add(mat);		
-	}
 }

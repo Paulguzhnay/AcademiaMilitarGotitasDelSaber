@@ -8,7 +8,7 @@ import ec.edu.ups.dao.EspacioFisicoDAO;
 import ec.edu.ups.model.*;
 
 @Stateless
-public class espacioFisicoON implements espacioFisicoONRemote {
+public class espacioFisicoON implements espacioFisicoONRemote, espacioFisicoONLocal{
 	
 	@Inject
 	private EspacioFisicoDAO daoEspacio;

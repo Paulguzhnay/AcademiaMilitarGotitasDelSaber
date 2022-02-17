@@ -9,9 +9,10 @@ import ec.edu.ups.model.Materia;
 @Local
 public interface MateriaONLocal {
 	
-public void insertar(Materia p) throws Exception;
+	public void insertar(Materia p) throws Exception;
 	
 	public List<Materia> getMaterias();
-
+	
+	public List<Materia> getMateriasCarrera(int nivel, int ofeID);
 }
 

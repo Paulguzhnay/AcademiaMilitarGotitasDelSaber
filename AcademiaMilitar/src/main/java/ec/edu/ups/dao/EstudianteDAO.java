@@ -45,5 +45,18 @@ public class EstudianteDAO {
 		return listado;
 		
 	}
+	
+public List<Estudiante> getListCuentas(String cedula){
+		
+		List<Estudiante> listado= new ArrayList<Estudiante>();
+		
+		String jpql ="SELECT est FROM Estudiante est WHERE est.persona.cedula= ?1";
+		Query query=em.createQuery(jpql, Estudiante.class);
+		query.setParameter(1, cedula);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
 
 }

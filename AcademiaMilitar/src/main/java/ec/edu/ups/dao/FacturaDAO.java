@@ -45,5 +45,39 @@ public class FacturaDAO {
 		return listado;
 		
 	}
+	
+public List<Factura> getFacturas(){
+		
+		List<Factura> listado= new ArrayList<Factura>();
+		
+		String jpql ="SELECT fact FROM Factura fact";
+		Query query=em.createQuery(jpql, Factura.class);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
+
+public void updateEstado(int id, boolean estado) {
+	String jpql ="UPDATE Factura SET estado= ?1 WHERE id = ?2";
+	Query query=em.createQuery(jpql, Factura.class);
+	query.setParameter(1, estado);
+	query.setParameter(2, id);
+}
+
+public List<Factura> getFacturasFecha(String fecha){
+	
+	List<Factura> listado= new ArrayList<Factura>();
+	
+	String jpql ="SELECT * FROM Factura TO_CHAR(fecha,'YYYY-MM-DD')= '?1'";
+	Query query=em.createQuery(jpql, Factura.class);
+	query.setParameter(1, fecha);
+	listado=query.getResultList();
+	
+	return listado;
+	
+}
 
 }
+
+

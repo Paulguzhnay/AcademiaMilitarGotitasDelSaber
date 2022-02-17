@@ -45,5 +45,42 @@ public class GrupoDAO {
 		return listado;
 		
 	}
+public List<Grupo> getGrupo(int matId){
+		
+		List<Grupo> listado= new ArrayList<Grupo>();
+		
+		String jpql ="SELECT gru FROM Grupo gru WHERE gru.materia.id = ?1";
+		Query query=em.createQuery(jpql, Grupo.class);
+		query.setParameter(1, matId);
+		listado=query.getResultList();
+		
+		return listado;
+		
+	}
+
+public List<Grupo> getGrupoMatriculado(int gruId){
+	
+	List<Grupo> listado= new ArrayList<Grupo>();
+	
+	String jpql ="SELECT gru FROM Grupo gru WHERE gru.id = ?1";
+	Query query=em.createQuery(jpql, Grupo.class);
+	query.setParameter(1, gruId);
+	listado=query.getResultList();
+	
+	return listado;
+	
+}
+
+public List<Grupo> getListB(int gruId){
+	
+	List<Grupo> listado= new ArrayList<Grupo>();
+	String jpql ="SELECT gru FROM Grupo gru WHERE gru.materia.nivel=?1";
+	Query query=em.createQuery(jpql, Grupo.class);
+	query.setParameter(1, gruId);
+	listado=query.getResultList();
+	
+	return listado;
+	
+}
 
 }

@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<h:head>
+<f:metadata>
+		<f:viewParam name="total" value="#{pagoFactura.total}"></f:viewParam>
+		<f:viewParam name="id" value="#{pagoFactura.cedula}"></f:viewParam>
+		<f:viewParam name="factura" value="#{pagoFactura.idFactura}"></f:viewParam>
+	</f:metadata>
+</h:head> 
+<style>
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900);
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #171A3D;
+  font-family: "Lato", sans-serif;
+}
+
+.price h1 {
+  font-weight: 300;
+  color: #18C2C0;
+  letter-spacing: 2px;
+}
+
+.card {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 520px;
+  height: 400px;
+}
+.card .row {
+  height: 20%;
+  width: 100%;
+  border-bottom: 1.2px solid #292C58;
+}
+.card .row:last-child {
+  border: none;
+}
+.card .paypal {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card .details {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.card .paypal, .card .credit {
+  background-color: #1E2148;
+}
+.card .cardholder, .card .number, .card .details {
+  background-color: #242852;
+}
+
+.paypal .left, .paypal .right, .credit .left, .credit .right {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.paypal .left, .credit .left {
+  float: left;
+  margin-left: 50px;
+}
+.paypal .left label, .credit .left label {
+  margin-left: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+.paypal .left input[type=radio], .credit .left input[type=radio] {
+  visibility: hidden;
+}
+.paypal .left .radio, .credit .left .radio {
+  position: absolute;
+  top: -2px;
+  left: -20px;
+  border: 3px solid #414365;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #292B52;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.paypal .left .radio::before, .credit .left .radio::before {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.paypal .right, .credit .right {
+  float: right;
+  margin-right: 30px;
+}
+.paypal .right img, .credit .right img {
+  width: 42px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+input[type=radio]:checked ~ .radio {
+  border: 3px solid #90E1E3;
+  background-color: #18C2C0;
+}
+input[type=radio]:checked ~ .radio::before {
+  background-color: #fff;
+}
+
+.cardholder .info, .number .info {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 40px;
+}
+.cardholder .info label, .number .info label {
+  display: inline-block;
+  letter-spacing: 0.5px;
+  color: #8F92C3;
+  width: 100px;
+}
+.cardholder .info input, .number .info input {
+  display: inline-block;
+  max-width: 300px;
+  width: 300px;
+  background-color: transparent;
+  font-family: "Source Code Pro";
+  border: none;
+  outline: none;
+  margin-left: 50px;
+  color: white;
+}
+.cardholder .info input::-moz-placeholder, .number .info input::-moz-placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+.cardholder .info input:-ms-input-placeholder, .number .info input:-ms-input-placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+.cardholder .info input::placeholder, .number .info input::placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+
+#cardnumber::-moz-placeholder {
+  letter-spacing: 2px;
+}
+
+#cardnumber:-ms-input-placeholder {
+  letter-spacing: 2px;
+}
+
+#cardnumber, #cardnumber::placeholder {
+  letter-spacing: 2px;
+}
+
+.details .left, .details .right {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.details .left {
+  float: left;
+  padding-left: 40px;
+  width: 50%;
+}
+.details .left label {
+  letter-spacing: 0.5px;
+  color: #8F92C3;
+  width: 100px;
+  margin-right: 20px;
+}
+.details .left select {
+  font-family: "Source Code Pro";
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #444880;
+}
+.details .left span {
+  font-family: "Source Code Pro";
+  color: #444880;
+  margin: 0 2px;
+}
+.details .right {
+  float: right;
+  width: 50%;
+}
+.details .right label {
+  margin-right: 20px;
+  color: #8F92C3;
+}
+.details .right input {
+  text-align: center;
+  width: 50px;
+  font-family: "Source Code Pro";
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.details .right input::-moz-placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+.details .right input:-ms-input-placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+.details .right input::placeholder {
+  font-family: "Source Code Pro";
+  color: #444880;
+}
+.details .right span {
+  text-align: center;
+  display: inline-block;
+  font-family: "Source Code Pro";
+  cursor: pointer;
+  margin-left: 50px;
+  color: #18C2C0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #18C2C0;
+  border-radius: 50%;
+}
+
+.button button {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 520px;
+  background-color: #18C2C0;
+  border: none;
+  color: #fff;
+  padding: 18px;
+  border-radius: 5px;
+  outline: none;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button button:hover {
+  background-color: #15aeac;
+}
+.button button:active {
+  background-color: #139b99;
+}
+.button button i {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+</style>
+<body> 
+<h:form>
+<div class="container">
+    <div class="price">
+    	<h1>Su total a pagar es de:</h1>
+        <h1>$#{pagoFactura.total}</h1>
+        
+    </div>
+    <div class="card__container">
+        <div class="card">
+            <div class="row paypal">
+                <div class="left">
+                    <input id="pp" type="radio" name="payment" />
+                    <div class="radio"></div>
+                    <label for="pp">Paypal</label>
+                </div>
+                <div class="right">
+                    <img src="https://jpglegal.com/wp-content/uploads/2017/06/Paypal-icon.png" alt="paypal" />
+                </div>
+            </div>
+            <div class="row credit">
+                <div class="left">
+                    <input id="cd" type="radio" name="payment" />
+                    <div class="radio"></div>
+                    <label for="cd">Debit/ Credit Card</label>
+                </div>
+                <div class="right">
+                    <img src="https://e7.pngegg.com/pngimages/575/18/png-clipart-visa-visa-thumbnail.png" alt="visa" />
+                    <img src="https://www.kindpng.com/picc/m/212-2125752_logo-master-card-png-transparent-png.png" alt="mastercard" />
+                    <img src="https://comunidadblogger.net/wp-content/uploads/2020/12/American-Express.png" alt="amex" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Maestro_logo.png" alt="maestro" />
+                </div>
+            </div>
+            <div class="row cardholder">
+                <div class="info">
+                    <label for="cardholdername">Name</label>
+                    <h:inputText a:placeholder="e.g. Richard Bovell" id="cardholdername" type="text" />
+                </div>
+            </div>
+            <div class="row number">
+                <div class="info">
+                    <label for="cardnumber">Card number</label>
+                    <h:inputText id="cardnumber" type="text"  maxlength="19" a:placeholder="8888-8888-8888-8888">
+                    <!--<f:validateRegex pattern="[0-9]{16,19}" for="cardnumber" />-->
+                    </h:inputText>
+                    <h:message  for = "cardnumber" 
+					style = "color: #d8000c;
+  					background-color: #ffbaba;" ></h:message>
+                </div>
+            </div>
+            <div class="row details">
+                <div class="left">
+                    <label for="expiry-date">Expiry</label>
+                     <h:selectOneMenu id="expiry-date">
+						<f:selectItem itemValue="#{null}" itemLabel="MM" />
+						<f:selectItem itemValue="1" itemLabel="01" />
+						<f:selectItem itemValue="2" itemLabel="02" />
+						<f:selectItem itemValue="3" itemLabel="03" />
+						<f:selectItem itemValue="4" itemLabel="04" />
+						<f:selectItem itemValue="5" itemLabel="05" />
+						<f:selectItem itemValue="6" itemLabel="06" />
+						<f:selectItem itemValue="7" itemLabel="07" />
+						<f:selectItem itemValue="8" itemLabel="08" />
+						<f:selectItem itemValue="9" itemLabel="09" />
+						<f:selectItem itemValue="10" itemLabel="10" />
+						<f:selectItem itemValue="11" itemLabel="11" />
+						<f:selectItem itemValue="12" itemLabel="12" />
+					</h:selectOneMenu>
+                    <span>/</span>
+                      <h:selectOneMenu id="expiry-date1">
+						<f:selectItem itemValue="#{null}" itemLabel="YY" />
+						<f:selectItem itemValue="2016" itemLabel="2016" />
+						<f:selectItem itemValue="2017" itemLabel="2017" />
+						<f:selectItem itemValue="2018" itemLabel="2018" />
+						<f:selectItem itemValue="2019" itemLabel="2019" />
+						<f:selectItem itemValue="2020" itemLabel="2020" />
+						<f:selectItem itemValue="2021" itemLabel="2021" />
+						<f:selectItem itemValue="2022" itemLabel="2022" />
+						<f:selectItem itemValue="2023" itemLabel="2023" />
+						<f:selectItem itemValue="2024" itemLabel="2024" />
+						<f:selectItem itemValue="2025" itemLabel="2025" />
+						<f:selectItem itemValue="2026" itemLabel="2026" />
+						<f:selectItem itemValue="2027" itemLabel="2027" />
+					</h:selectOneMenu>
+                </div>
+                <div class="right">
+                    <label for="cvv">CVC/CVV</label>
+                   <h:inputText type="text" maxlength="4" a:placeholder="123"/>
+                    <span data-balloon-length="medium" data-balloon="The 3 or 4-digit number on the back of your card." data-balloon-pos="up">i</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <h:commandButton style="background-color: #18C2C0; font-size: 1.2rem; font-weight: 400;letter-spacing: 1px;width: 520px;
+        border: none;color: #fff;padding: 18px; border-radius: 5px;outline: none;transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);" action="#{pagoFactura.pagarFactura()}" class="ion-locked" value="Confirmar y Pagar"></h:commandButton>
+    </div>
+    <br />
+   
+</div>
+</h:form>
+<h:form>
+ <div class="button">
+        <h:commandButton style=" margin-left: 387px; background-color: #18C2C0; font-size: 1.2rem; font-weight: 400;letter-spacing: 1px;width: 520px;
+        border: none;color: #fff;padding: 18px; border-radius: 5px;outline: none;transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);" action="#{pagoFactura.cancelar()}" class="ion-locked" value="Cancelar"></h:commandButton>
+    </div>
+</h:form>
+
+</body> 
+</html>

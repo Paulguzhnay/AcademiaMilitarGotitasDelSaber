@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,10 +31,18 @@ public class MallaCurricular implements Serializable{
 	@Column(name = "mall_horas")
     private int horas;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "ofe_id")
-    private List<OfertaAcademica> ofertasAcademicas;
+    private OfertaAcademica ofertaAcademica = new OfertaAcademica();
 	
+	public OfertaAcademica getOfertaAcademica() {
+		return ofertaAcademica;
+	}
+
+	public void setOfertaAcademica(OfertaAcademica ofertaAcademica) {
+		this.ofertaAcademica = ofertaAcademica;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -66,19 +75,12 @@ public class MallaCurricular implements Serializable{
         this.horas = horas;
     }
 
-	public List<OfertaAcademica> getOfertasAcademicas() {
-		return ofertasAcademicas;
+	@Override
+	public String toString() {
+		return "MallaCurricular [id=" + id + ", nivel=" + nivel + ", asignatura=" + asignatura + ", horas=" + horas
+				+ ", ofertaAcademica=" + ofertaAcademica + "]";
 	}
 
-	public void setOfertasAcademicas(List<OfertaAcademica> ofertasAcademicas) {
-		this.ofertasAcademicas = ofertasAcademicas;
-	}
 	
-	public void addOfertaAcademica(OfertaAcademica ofe) {
-		if(ofertasAcademicas == null)
-			ofertasAcademicas = new ArrayList<OfertaAcademica>();
-			
-		ofertasAcademicas.add(ofe);		
-	}
     
 }

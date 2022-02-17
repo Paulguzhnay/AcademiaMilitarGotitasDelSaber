@@ -11,4 +11,8 @@ public interface GrupoONLocal {
 	public void insertar(Grupo g) throws Exception;
 	
 	public List <Grupo> getGrupo();
+	public List <Grupo> getGrupo2(int matID);
+	
+	public List <Grupo> getGrupomatriculado(int gruID);
+	public List <Grupo> getGrupoB(int gruId);
 }
