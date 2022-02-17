@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Persona } from \"./persona\";\nexport class Docente {\n  constructor() {\n    this.id = 0;\n    this.titulo = '';\n    this.gradoTitulo = '';\n    this.especializacion = '';\n    this.persona = new Persona();\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

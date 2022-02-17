@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { PersonaWS } from \"./personaws\";\nexport class DocenteWS {\n  constructor() {\n    this.titulo = '';\n    this.gradoTiulo = '';\n    this.especializacion = '';\n    this.persona = new PersonaWS();\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

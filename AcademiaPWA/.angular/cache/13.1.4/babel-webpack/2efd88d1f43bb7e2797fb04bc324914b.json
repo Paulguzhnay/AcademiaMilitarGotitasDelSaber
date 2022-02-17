@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Docente } from \"./docente\";\nimport { Materia } from \"./materia\";\nexport class Historial {\n  constructor() {\n    this.id = 0;\n    this.numeroGrupo = 0;\n    this.nivel = 0;\n    this.materia = new Materia();\n    this.docente = new Docente();\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

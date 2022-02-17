@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Materia {\n  constructor() {\n    this.id = 0;\n    this.nombre = '';\n    this.nivel = '';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

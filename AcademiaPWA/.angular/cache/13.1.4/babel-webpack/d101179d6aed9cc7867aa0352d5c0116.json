@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Persona {\n  constructor() {\n    this.cedula = '';\n    this.nombres = '';\n    this.apellidos = '';\n    this.direccion = '';\n    this.telefono = '';\n    this.genero = '';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
